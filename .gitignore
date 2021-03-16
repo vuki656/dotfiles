@@ -1,5 +1,7 @@
 // INCLUDED LIST
 !/.config/alacritty/
+!/.bash_profile
+!/.tmux.config
 
 // ROOT FOLDERS & FILES
 /.config/*
@@ -52,7 +54,6 @@
 /.ideavimrc
 /.profile
 /.yarnrc
-/.bash_profile
 /.nvidia-settings-rc
 /.bashrc
 /.npmrc

@@ -1,6 +1,13 @@
 env:
   TERM: xterm-256color
 
+shell:
+  program: /bin/bash
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
 colors:
   primary:
     background: '#282c34'
@@ -29,9 +36,11 @@ colors:
 font:
   normal:
     family: JetBrains Mono Nerd Font
-  size: 14.0
+  size: 15.0
 
 window:
   padding:
     x: 4
     y: 4
+
+  dynamic_padding: false
