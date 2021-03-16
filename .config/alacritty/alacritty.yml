@@ -38,9 +38,3 @@ font:
     family: JetBrains Mono Nerd Font
   size: 15.0
 
-window:
-  padding:
-    x: 4
-    y: 4
-
-  dynamic_padding: false
