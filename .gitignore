@@ -1,0 +1,7 @@
+// Include
+!.gitignore
+!./.config/alacritty/*
+
+// Exclude Everything 
+*
+
