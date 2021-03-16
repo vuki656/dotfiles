@@ -30,3 +30,8 @@ font:
   normal:
     family: JetBrains Mono Nerd Font
   size: 14.0
+
+window:
+  padding:
+    x: 4
+    y: 4
