@@ -1,5 +1,6 @@
 // INCLUDED LIST
 !/.config/alacritty/
+!/.config/awesome/
 !/.bash_profile
 !/.tmux.config
 
