@@ -1,0 +1,6 @@
+let mapleader = " "
+
+inoremap jj <Esc>
+
+map <leader>p :action SearchEverywhere<CR>
+map <leader>ef :action Javascript.Linters.EsLint.Fix<CR>
