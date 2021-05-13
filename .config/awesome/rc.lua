@@ -588,3 +588,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 terminal = "alacritty"                              -- Set terminal
 editor = "nvim"                                     -- Set editor
 modkey = "Mod4"                                     -- Set modkey to super key(windows key)
+
+awful.spawn.with_shell('~/.screenlayout/default.sh')     -- Load screen layout config on boot
