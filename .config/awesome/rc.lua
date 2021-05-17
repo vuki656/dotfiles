@@ -589,4 +589,5 @@ terminal = "alacritty"                              -- Set terminal
 editor = "nvim"                                     -- Set editor
 modkey = "Mod4"                                     -- Set modkey to super key(windows key)
 
-awful.spawn.with_shell('~/.screenlayout/default.sh')     -- Load screen layout config on boot
+awful.spawn.with_shell('~/.screenlayout/default.sh')     				-- Load screen layout config on boot
+awful.spawn.with_shell('feh --bg-scale ~/wallpapers/mojave/mojave_dynamic_15.jpeg')     -- Set wallpaper
