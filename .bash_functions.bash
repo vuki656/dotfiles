@@ -1,4 +1,6 @@
-# Clean system
+## Add to .bashrc "source ~./.bash_functions.bash"
+
+# Clean System
 clean() {
     sudo apt clean
     sudo apt autoclean
