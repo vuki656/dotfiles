@@ -38,3 +38,7 @@ font:
     family: JetBrains Mono Nerd Font
   size: 13.0
 
+scrolling:
+  history: 10000
+  multiplier: 3
+
