@@ -1,3 +1,5 @@
+## Add to .bashrc "source ~./.bash_aliases.bash"
+
 # Terminal
 alias c='clear'
 alias ..='cd ..'
