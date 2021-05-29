@@ -22,7 +22,9 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- Widgets
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -213,8 +215,13 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
+            weather_widget({
+                api_key='d8ec854f0c75c3d11b05badeda7346f6',
+                coordinates = { 45.774867,  15.996309 },
+                time_format_12h = true,
+                units = 'metric',
+                show_hourly_forecast = true,
+            }),
             mytextclock,
             s.mylayoutbox,
             logout_menu_widget(),
