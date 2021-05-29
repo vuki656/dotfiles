@@ -224,7 +224,9 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey }, "c", function () awful.util.spawn_with_shell("google-chrome --password-store=gnome") end),
+
+    awful.key({ modkey,           }, "s",      hotkeys_popup.shcow_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -566,8 +568,7 @@ terminal = "alacritty"                              -- Set terminal
 editor = "nvim"                                     -- Set editor
 modkey = "Mod4"                                     -- Set modkey to super key(windows key)
 
-awful.spawn.with_shell('~/.screenlayout/default.sh')     							-- Load screen layout config on boot
+awful.spawn.with_shell('~/.screenlayout/default.sh')     							                -- Load screen layout config on boot
 awful.spawn.with_shell('feh --bg-scale ~/wallpapers/mojave/mojave_dynamic_15.jpeg')     			-- Set wallpaper
-awful.spawn.with_shell('exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets')     	-- Enable password manager
 
 os.execute("xset r rate 150 50") 		-- Set repeating keys speed (args => delay, times per second)
