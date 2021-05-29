@@ -1,5 +1,3 @@
-# Add to .bashrc "source ~/.bash_public.bash"
-
 source ~/.bash_functions.bash
 source ~/.bash_aliases.bash
 
