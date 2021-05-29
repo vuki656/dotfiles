@@ -222,43 +222,111 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
--- {{{ Key bindings
+-- Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey }, "c", function () awful.util.spawn_with_shell("google-chrome --password-store=gnome") end),
-
-    awful.key({ modkey,           }, "s",      hotkeys_popup.shcow_help,
-              {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
-
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
+    awful.key(
+        { modkey },
+        "c",
+        function () 
+            awful.util.spawn_with_shell("google-chrome --password-store=gnome")
         end,
-        {description = "focus next by index", group = "client"}
+        { description = "Start chrome" }
     ),
-    awful.key({ modkey,           }, "k",
+
+    awful.key(
+        { modkey },
+        "s",
+        hotkeys_popup.show_help,
+        { description="show help" }
+    ),
+
+    awful.key(
+        { modkey },
+        "Left",
+        awful.tag.viewprev,
+        { description = "Go to previous desktop" }
+    ),
+
+    awful.key(
+        { modkey },
+        "Right",
+        awful.tag.viewnext,
+       { description = "Go to next desktop" }
+    ),
+
+    awful.key(
+        { modkey }, 
+        "Escape",
+        awful.tag.history.restore,
+        { description = "Toggle to last dektop" }
+    ),
+
+    awful.key(
+        { modkey },
+        "j",
         function ()
             awful.client.focus.byidx(-1)
         end,
-        {description = "focus previous by index", group = "client"}
+        { description = "Focus previous window in current desktop" }
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
 
-    -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
-              {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
-              {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
+    awful.key(
+        { modkey },
+        "k",
+        function ()
+            awful.client.focus.byidx(1)
+        end,
+        { description = "Focus next window in current desktop" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Shift"
+        },
+        "j",
+        function () 
+            awful.client.swap.byidx(-1)
+        end,
+        { description = "Swap with previous client" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Shift"
+        },
+        "k",
+        function () 
+            awful.client.swap.byidx(1)
+        end,
+        { description = "Swap with next client" }
+     ),
+
+    awful.key(
+        { 
+            modkey,
+            "Control"
+        },
+        "j",
+        function () 
+            awful.screen.focus_relative(-1)
+        end,
+        { description = "Focus the previous screen" }
+    ),
+
+    awful.key(
+        {
+            modkey,
+            "Control"
+        },
+        "k",
+        function () 
+            awful.screen.focus_relative(1)
+        end,
+        { description = "Focus the next screen" }
+    ),
+
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
