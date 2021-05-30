@@ -2,9 +2,9 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
-local modkey = "Mod4"
+modkey = "Mod4"
 
-local key_groups = {
+key_groups = {
     apps = "Applications",
     awesome = "Awesome",
     current_screen = "Current Screen",
@@ -155,96 +155,8 @@ clientkeys = gears.table.join(
     )
 )
 
--- Bind key numbers to tags
-for i = 1, 9 do
-    globalkeys = gears.table.join(
-        globalkeys,
-
-        awful.key(
-            { modkey },
-            "#" .. i + 9,
-            function ()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-
-                if tag then
-                    tag:view_only()
-                end
-            end,
-            { 
-                description = "Go to tag #" .. i,
-                group = key_groups.tag
-            }
-        ),
-
-        awful.key(
-            { 
-                modkey,
-                "Control" 
-            },
-            "#" .. i + 9,
-            function ()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-    
-                if tag then
-                    awful.tag.viewtoggle(tag)
-                end
-            end,
-            {
-                description = "Display tag #" .. i .. " in current tag",
-                group = key_groups.tag
-            }
-        ),
-    
-        awful.key(
-            {
-                modkey,
-                "Shift"
-            },
-            "#" .. i + 9,
-            function ()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-    
-                    if tag then
-                        client.focus:move_to_tag(tag)
-                    end
-                end
-            end,
-            {
-                description = "Move focused window to tag #"..i,
-                group = key_groups.tag
-            }
-        ),
-    
-        awful.key(
-            {
-                modkey,
-                "Control",
-                "Shift"
-            },
-            "#" .. i + 9,
-            function ()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-    
-                    if tag then
-                        client.focus:toggle_tag(tag)
-                    end
-                end
-            end,
-            {
-                description = "Make currently selected window sticky on tag #" .. i,
-                group = key_groups.tag
-            }
-        )
-    )
-end
-
-
 -- Key bindings
-local globalkeys = gears.table.join(
+globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "c",
@@ -622,157 +534,6 @@ local globalkeys = gears.table.join(
     )
 )
 
-local key_groups = {
-    apps = "Applications",
-    awesome = "Awesome",
-    current_screen = "Current Screen",
-    current_window = "Current Window",
-    tag = "Tag",
-    screen = "Screen",
-    prompts = "Prompts",
-    other = "Other",
-}
-
-
-clientkeys = gears.table.join(
-    awful.key(
-        { modkey },
-        "f",
-        function (client)
-            client.fullscreen = not client.fullscreen
-            client:raise()
-        end,
-        { 
-            description = "Toggle currently selected window fullscreen",
-            group = key_groups.current_window
-        }
-     ),
-
-    awful.key(
-        { 
-            modkey,
-            "Shift"   
-        },
-        "c",
-        function (client) 
-            client:kill()                         
-        end,
-        { 
-            description = "Close currently selected window",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        {
-            modkey,
-            "Control"
-        },
-        "space",
-        awful.client.floating.toggle,
-        { 
-            description = "Toggle currently selected window to floating",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        {
-            modkey,
-            "Control"
-        },
-        "Return",
-        function (client) 
-            client:swap(awful.client.getmaster())
-        end,
-        { 
-            description = "Make currently selected window master",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        { modkey },
-        "o",
-        function (client) 
-            client:move_to_screen()               
-        end,
-        { 
-            description = "Move currently selected window to next screen",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        { modkey },
-        "t",
-        function (client) 
-            client.ontop = not client.ontop
-        end,
-        { 
-            description = "Toggle current selected window on top",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        { modkey },
-        "n",
-        function (client)
-            client.minimized = true
-        end,
-        { 
-            description = "Minimize currently selected window",
-            group = key_groups.current_window
-        }
-     ),
-
-    awful.key(
-        { modkey },
-        "m",
-        function (client)
-            client.maximized = not client.maximized
-            client:raise()
-        end,
-        { 
-            description = "Un/Maximize currently selected window",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        {
-            modkey,
-            "Control" 
-        },
-        "m",
-        function (client)
-            client.maximized_vertical = not client.maximized_vertical
-            client:raise()
-        end,
-        { 
-            description = "Un/Maximize currently selected window vertically",
-            group = key_groups.current_window
-        }
-    ),
-
-    awful.key(
-        { 
-            modkey,
-            "Shift"
-        },
-        "m",
-        function (client)
-            client.maximized_horizontal = not client.maximized_horizontal
-            client:raise()
-        end,
-        { 
-            description = "Un/Maximize currently selected window horizontally",
-            group = key_groups.current_window
-        }
-    )
-)
-
 -- Bind key numbers to tags
 for i = 1, 9 do
     globalkeys = gears.table.join(
@@ -859,4 +620,3 @@ for i = 1, 9 do
         )
     )
 end
-
