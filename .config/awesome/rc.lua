@@ -43,6 +43,9 @@ end
 --  Set theme
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+beautiful.useless_gap = 10
+beautiful.gap_single_client = true
+
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
@@ -377,8 +380,8 @@ client.connect_signal("request::titlebars", function(client)
     }
 
     local style = {
-        bg_normal = colors.transparent,
-        bg_focus = colors.transparent,
+        bg_normal = '#1a1a1b85',
+        bg_focus = '#1a1a1bab',
         size = 20,
     }
 
@@ -407,3 +410,4 @@ awful.spawn.with_shell('feh --bg-scale ~/wallpapers/forest.jpg')     	          
 awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
 
 os.execute("xset r rate 150 40") 		-- Set repeating keys speed (args => delay, times per second)
+
