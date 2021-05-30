@@ -179,9 +179,14 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
+        screen = s,
+        filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
+        style = {
+            shape_border_width = 1,
+            shape_border_color = '#777777',
+            shape  = gears.shape.rounded_bar,
+        },
     }
 
     -- Create the wibox
@@ -213,13 +218,8 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
--- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
--- }}}
+-- Open menu with right click
+root.buttons(awful.button({ }, 3, function () mymainmenu:toggle() end))
 
 local key_groups = {
     apps = "Applications",
@@ -233,7 +233,7 @@ local key_groups = {
 }
 
 -- Key bindings
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "c",
@@ -837,7 +837,7 @@ for i = 1, 9 do
     )
 end
 
-clientbuttons = gears.table.join(
+local clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
     end),
@@ -860,7 +860,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
+      properties = { border_width = 0,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -928,55 +928,80 @@ client.connect_signal("manage", function (c)
     end
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
+-- Window titlebar
+client.connect_signal("request::titlebars", function(client)
+    local left_mouse_button = 1
+    local right_mouse_button = 3
+
+    local drag_button = awful.button(
+        {},
+        left_mouse_button,
+        function()
+            client:emit_signal(
+                "request::activate",
+                "titlebar",
+                { raise = true }
+            )
+
+            awful.mouse.client.move(client)
+        end
     )
 
-    awful.titlebar(c) : setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal()
-        },
+    local resize_button = awful.button(
+        {},
+        right_mouse_button,
+        function()
+            client:emit_signal(
+                "request::activate",
+                "titlebar",
+                { raise = true }
+            )
+
+            awful.mouse.client.resize(client)
+        end
+    )
+
+    local buttons = gears.table.join(drag_button, resize_button)
+
+    local left_section = { 
+        layout  = wibox.layout.fixed.horizontal,
+        buttons = buttons
+    }
+
+
+    local midddle_section = { 
+        awful.titlebar.widget.titlewidget(client),
+        buttons = buttons,
+        layout  = wibox.layout.flex.horizontal
+    }
+
+    local right_section = {
+        layout = wibox.layout.fixed.horizontal(),
+        awful.titlebar.widget.floatingbutton (client),
+        awful.titlebar.widget.maximizedbutton(client),
+        awful.titlebar.widget.stickybutton(client),
+        awful.titlebar.widget.ontopbutton(client),
+        awful.titlebar.widget.closebutton(client),
+    }
+
+    local style = {
+        bg_normal = '#2f282829',
+        bg_focus = '#2f2828a1',
+        size = 20,
+    }
+
+    awful.titlebar(client, style) : setup {
+        left_section,
+        midddle_section,
+        right_section,
         layout = wibox.layout.align.horizontal
     }
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
+-- Focus follows mouse across the screens
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
-
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
-
 
 ----------------------------------------------------------------------
 --------------------------- CUSTOM CONFIG ----------------------------
