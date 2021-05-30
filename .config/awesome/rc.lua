@@ -972,16 +972,14 @@ client.connect_signal("request::titlebars", function(client)
         buttons = buttons
     }
 
-
     local midddle_section = { 
-        awful.titlebar.widget.titlewidget(client),
         buttons = buttons,
         layout  = wibox.layout.flex.horizontal
     }
 
     local right_section = {
         layout = wibox.layout.fixed.horizontal(),
-        awful.titlebar.widget.floatingbutton (client),
+        awful.titlebar.widget.floatingbutton(client),
         awful.titlebar.widget.maximizedbutton(client),
         awful.titlebar.widget.stickybutton(client),
         awful.titlebar.widget.ontopbutton(client),
