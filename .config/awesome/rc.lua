@@ -11,7 +11,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
-require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
 -- Widgets
@@ -227,11 +226,10 @@ local key_groups = {
     awesome = "Awesome",
     current_screen = "Current Screen",
     current_window = "Current Window",
-    desktop = "Desktop",
+    tag = "Tag",
     screen = "Screen",
     prompts = "Prompts",
     other = "Other",
-    window = "Window"
 }
 
 -- Key bindings
@@ -264,7 +262,7 @@ globalkeys = gears.table.join(
         awful.tag.viewprev,
         { 
             description = "Go to previous desktop",
-            group = key_groups.desktop
+            group = key_groups.tag
         }
     ),
 
@@ -273,8 +271,8 @@ globalkeys = gears.table.join(
         "Right",
         awful.tag.viewnext,
        { 
-           description = "Go to next desktop",
-           group = key_groups.desktop
+           description = "Go to next tag",
+           group = key_groups.tag
        }
     ),
 
@@ -283,8 +281,8 @@ globalkeys = gears.table.join(
         "Escape",
         awful.tag.history.restore,
         { 
-            description = "Go to last visited dektop",
-            group = key_groups.desktop
+            description = "Go to last visited tag",
+            group = key_groups.tag
         }
     ),
 
@@ -444,8 +442,8 @@ globalkeys = gears.table.join(
             awful.tag.incmwfact(0.05)          
         end,
         { 
-            description = "Increase master window width factor",
-            group = key_groups.current_screen
+            description = "Increase current window width",
+            group = key_groups.current_window
         }
     ),
 
@@ -456,8 +454,8 @@ globalkeys = gears.table.join(
             awful.tag.incmwfact(-0.05)          
         end,
         { 
-            description = "Decrease master width factor",
-            group = key_groups.current_screen
+            description = "Decrease current window width",
+            group = key_groups.current_window
         }
     ),
 
@@ -468,7 +466,7 @@ globalkeys = gears.table.join(
         },
         "h",
         function () 
-            awful.tag.incnmaster( 1, nil, true) 
+            awful.tag.incnmaster(1, nil, true) 
         end,
         { 
             description = "Increase the number of master clients",
@@ -498,7 +496,7 @@ globalkeys = gears.table.join(
         },
         "h",
         function () 
-            awful.tag.incncol( 1, nil, true)    
+            awful.tag.incncol(1, nil, true)    
         end,
         { 
             description = "Increase the number of columns",
@@ -528,7 +526,7 @@ globalkeys = gears.table.join(
             awful.layout.inc(1)                
         end,
         { 
-            description = "Make selected window only one on the desktop",
+            description = "Make selected window only one on the screen",
             group = key_groups.current_window
         }
     ),
@@ -752,53 +750,90 @@ clientkeys = gears.table.join(
     )
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
+-- Bind key numbers to tags
 for i = 1, 9 do
-    globalkeys = gears.table.join(globalkeys,
-        -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = awful.screen.focused()
-                        local tag = screen.tags[i]
-                        if tag then
-                           tag:view_only()
-                        end
-                  end,
-                  {description = "view tag #"..i, group = "tag"}),
-        -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
-                  {description = "toggle tag #" .. i, group = "tag"}),
-        -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:move_to_tag(tag)
-                          end
-                     end
-                  end,
-                  {description = "move focused client to tag #"..i, group = "tag"}),
-        -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+    globalkeys = gears.table.join(
+        globalkeys,
+
+        awful.key(
+            { modkey },
+            "#" .. i + 9,
+            function ()
+                local screen = awful.screen.focused()
+                local tag = screen.tags[i]
+
+                if tag then
+                    tag:view_only()
+                end
+            end,
+            { 
+                description = "Go to tag #" .. i,
+                group = key_groups.tag
+            }
+        ),
+
+        awful.key(
+            { 
+                modkey,
+                "Control" 
+            },
+            "#" .. i + 9,
+            function ()
+                local screen = awful.screen.focused()
+                local tag = screen.tags[i]
+    
+                if tag then
+                    awful.tag.viewtoggle(tag)
+                end
+            end,
+            {
+                description = "Display tag #" .. i .. " in current tag",
+                group = key_groups.tag
+            }
+        ),
+    
+        awful.key(
+            {
+                modkey,
+                "Shift"
+            },
+            "#" .. i + 9,
+            function ()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+    
+                    if tag then
+                        client.focus:move_to_tag(tag)
+                    end
+                end
+            end,
+            {
+                description = "Move focused window to tag #"..i,
+                group = key_groups.tag
+            }
+        ),
+    
+        awful.key(
+            {
+                modkey,
+                "Control",
+                "Shift"
+            },
+            "#" .. i + 9,
+            function ()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+    
+                    if tag then
+                        client.focus:toggle_tag(tag)
+                    end
+                end
+            end,
+            {
+                description = "Make currently selected window sticky on tag #" .. i,
+                group = key_groups.tag
+            }
+        )
     )
 end
 
