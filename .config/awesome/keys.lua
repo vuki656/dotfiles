@@ -1,10 +1,10 @@
 local gears = require("gears")
 local awful = require("awful")
-local hotkeys_popup = require("awful.hotkeys_popup")
+local popup = require("awful.hotkeys_popup")
 
-modkey = "Mod4"
+local modkey = "Mod4"
 
-key_groups = {
+local key_groups = {
     apps = "Applications",
     awesome = "Awesome",
     current_screen = "Current Screen",
@@ -16,7 +16,7 @@ key_groups = {
 }
 
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
     awful.key(
         { modkey },
         "f",
@@ -172,7 +172,7 @@ globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "s",
-        hotkeys_popup.show_help,
+        popup.show_help,
         { 
             description="Open key combo help",
             group = key_groups.other

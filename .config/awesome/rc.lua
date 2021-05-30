@@ -398,7 +398,7 @@ editor = "nvim"                                     -- Set editor
 modkey = "Mod4"                                     -- Set modkey to super key(windows key)
 
 awful.spawn.with_shell('~/.screenlayout/default.sh')     							                -- Load screen layout config on boot
-awful.spawn.with_shell('feh --bg-scale ~/wallpapers/mojave/mojave_dynamic_15.jpeg')     			-- Set wallpaper
+awful.spawn.with_shell('feh --bg-scale ~/wallpapers/forest.jpg')     	                       		-- Set wallpaper
 awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
 
 os.execute("xset r rate 150 40") 		-- Set repeating keys speed (args => delay, times per second)
