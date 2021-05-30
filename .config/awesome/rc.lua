@@ -222,6 +222,18 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+local key_groups = {
+    apps = "Applications",
+    awesome = "Awesome",
+    current_screen = "Current Screen",
+    current_window = "Current Window",
+    desktop = "Desktop",
+    screen = "Screen",
+    prompts = "Prompts",
+    other = "Other",
+    window = "Window"
+}
+
 -- Key bindings
 globalkeys = gears.table.join(
     awful.key(
@@ -230,35 +242,50 @@ globalkeys = gears.table.join(
         function () 
             awful.util.spawn_with_shell("google-chrome --password-store=gnome")
         end,
-        { description = "Start chrome" }
+        { 
+            description = "Start chrome",
+            group = key_groups.apps
+        }
     ),
 
     awful.key(
         { modkey },
         "s",
         hotkeys_popup.show_help,
-        { description="show help" }
+        { 
+            description="Open key combo help",
+            group = key_groups.other
+        }
     ),
 
     awful.key(
         { modkey },
         "Left",
         awful.tag.viewprev,
-        { description = "Go to previous desktop" }
+        { 
+            description = "Go to previous desktop",
+            group = key_groups.desktop
+        }
     ),
 
     awful.key(
         { modkey },
         "Right",
         awful.tag.viewnext,
-       { description = "Go to next desktop" }
+       { 
+           description = "Go to next desktop",
+           group = key_groups.desktop
+       }
     ),
 
     awful.key(
         { modkey }, 
         "Escape",
         awful.tag.history.restore,
-        { description = "Toggle to last dektop" }
+        { 
+            description = "Go to last visited dektop",
+            group = key_groups.desktop
+        }
     ),
 
     awful.key(
@@ -267,7 +294,10 @@ globalkeys = gears.table.join(
         function ()
             awful.client.focus.byidx(-1)
         end,
-        { description = "Focus previous window in current desktop" }
+        { 
+            description = "Focus previous window in current screen",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -276,7 +306,10 @@ globalkeys = gears.table.join(
         function ()
             awful.client.focus.byidx(1)
         end,
-        { description = "Focus next window in current desktop" }
+        { 
+            description = "Focus next window in current screen",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -288,7 +321,10 @@ globalkeys = gears.table.join(
         function () 
             awful.client.swap.byidx(-1)
         end,
-        { description = "Swap with previous client" }
+        { 
+            description = "Swap with previous window in current screen",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -300,7 +336,10 @@ globalkeys = gears.table.join(
         function () 
             awful.client.swap.byidx(1)
         end,
-        { description = "Swap with next client" }
+        { 
+            description = "Swap with next window in current screen",
+            group = key_groups.current_screen
+        }
      ),
 
     awful.key(
@@ -312,7 +351,10 @@ globalkeys = gears.table.join(
         function () 
             awful.screen.focus_relative(-1)
         end,
-        { description = "Focus the previous screen" }
+        { 
+            description = "Focus previous screen",
+            group = key_groups.screen
+        }
     ),
 
     awful.key(
@@ -324,14 +366,20 @@ globalkeys = gears.table.join(
         function () 
             awful.screen.focus_relative(1)
         end,
-        { description = "Focus the next screen" }
+        { 
+            description = "Focus next screen",
+            group = key_groups.screen
+        }
     ),
 
     awful.key(
         { modkey },
         "u",
         awful.client.urgent.jumpto,
-        { description = "Jump to urgent client" }
+        { 
+            description = "Jump to urgent client",
+            group = key_groups.other
+        }
     ),
 
     awful.key(
@@ -344,7 +392,10 @@ globalkeys = gears.table.join(
                 client.focus:raise()
             end
         end,
-        { description = "Switch between windows in current desktop" }
+        {
+            description = "Switch between windows in current screen",
+            group = key_groups.current_screen
+        }
      ),
 
 
@@ -354,7 +405,10 @@ globalkeys = gears.table.join(
         function () 
             awful.spawn(terminal) 
         end,
-       { description = "Open terminal" }
+        { 
+            description = "Start terminal",
+            group = key_groups.apps
+        }
     ),
 
     awful.key(
@@ -364,7 +418,10 @@ globalkeys = gears.table.join(
        },
        "r",
        awesome.restart,
-       { description = "Restart awesome" }
+       { 
+           description = "Restart awesome",
+           group = key_groups.awesome
+       }
      ),
 
     awful.key(
@@ -374,7 +431,10 @@ globalkeys = gears.table.join(
         },
         "q",
         awesome.quit,
-        { description = "Quit awesome" }
+        { 
+            description = "Quit awesome",
+            group = key_groups.awesome
+        }
      ),
 
     awful.key(
@@ -383,7 +443,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incmwfact(0.05)          
         end,
-       { description = "Increase master window width factor" }
+        { 
+            description = "Increase master window width factor",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -392,7 +455,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incmwfact(-0.05)          
         end,
-       { description = "Decrease master width factor" }
+        { 
+            description = "Decrease master width factor",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -404,7 +470,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incnmaster( 1, nil, true) 
         end,
-       { description = "Increase the number of master clients" }
+        { 
+            description = "Increase the number of master clients",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -416,7 +485,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incnmaster(-1, nil, true) 
         end,
-        { description = "Decrease the number of master clients" }
+        { 
+            description = "Decrease the number of master clients",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -428,7 +500,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incncol( 1, nil, true)    
         end,
-        { description = "Increase the number of columns" }
+        { 
+            description = "Increase the number of columns",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -440,7 +515,10 @@ globalkeys = gears.table.join(
         function () 
             awful.tag.incncol(-1, nil, true)    
         end,
-        { description = "Decrease the number of columns" }
+        { 
+            description = "Decrease the number of columns",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -449,7 +527,10 @@ globalkeys = gears.table.join(
         function () 
             awful.layout.inc(1)                
         end,
-        { description = "Make selected window only one on the desktop" }
+        { 
+            description = "Make selected window only one on the desktop",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -461,7 +542,10 @@ globalkeys = gears.table.join(
         function () 
             awful.layout.inc(-1)                
         end,
-        { description = "Return window from being the only one on desktop to that desktop layout" }
+        { 
+            description = "Return window from being the only one on desktop to that desktop layout",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -481,7 +565,10 @@ globalkeys = gears.table.join(
                 )
            end
         end,
-        { description = "Restore minimized window" }
+        { 
+            description = "Restore minimized window",
+            group = key_groups.current_screen
+        }
     ),
 
     awful.key(
@@ -490,7 +577,10 @@ globalkeys = gears.table.join(
         function () 
             awful.screen.focused().mypromptbox:run()
         end,
-        { description = "Open run prompt" }
+        { 
+            description = "Open run prompt",
+            group = key_groups.prompts
+        }
     ),
 
     awful.key(
@@ -498,13 +588,16 @@ globalkeys = gears.table.join(
         "x",
         function ()
             awful.prompt.run {
-                prompt = "Run Lua code: ",
+                prompt = "Run Lua Code: ",
                 textbox = awful.screen.focused().mypromptbox.widget,
                 exe_callback = awful.util.eval,
                 history_path = awful.util.get_cache_dir() .. "/history_eval"
             }
         end,
-        { description = "Open lua execute prompt" }
+        { 
+            description = "Open lua execute prompt",
+            group = key_groups.prompts
+        }
     ),
 
     awful.key(
@@ -513,7 +606,10 @@ globalkeys = gears.table.join(
         function() 
             menubar.show() 
         end,
-        { description = "Open menubar" }
+        { 
+            description = "Open menubar",
+            group = key_groups.other
+        }
     )
 )
 
@@ -525,7 +621,10 @@ clientkeys = gears.table.join(
             client.fullscreen = not client.fullscreen
             client:raise()
         end,
-        { description = "Toggle currently selected window fullscreen" }
+        { 
+            description = "Toggle currently selected window fullscreen",
+            group = key_groups.current_window
+        }
      ),
 
     awful.key(
@@ -537,7 +636,10 @@ clientkeys = gears.table.join(
         function (client) 
             client:kill()                         
         end,
-       { description = "Close currently selected window" }
+        { 
+            description = "Close currently selected window",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -547,7 +649,10 @@ clientkeys = gears.table.join(
         },
         "space",
         awful.client.floating.toggle,
-       { description = "Toggle currently selected window to floating" }
+        { 
+            description = "Toggle currently selected window to floating",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -559,7 +664,10 @@ clientkeys = gears.table.join(
         function (client) 
             client:swap(awful.client.getmaster())
         end,
-        { description = "Make currently selected window master" }
+        { 
+            description = "Make currently selected window master",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -568,7 +676,10 @@ clientkeys = gears.table.join(
         function (client) 
             client:move_to_screen()               
         end,
-        { description = "Move currently selected window to next screen" }
+        { 
+            description = "Move currently selected window to next screen",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -577,7 +688,10 @@ clientkeys = gears.table.join(
         function (client) 
             client.ontop = not client.ontop
         end,
-       { description = "Toggle current selected window on top" }
+        { 
+            description = "Toggle current selected window on top",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -586,7 +700,10 @@ clientkeys = gears.table.join(
         function (client)
             client.minimized = true
         end,
-        { description = "Minimize currently selected window" }
+        { 
+            description = "Minimize currently selected window",
+            group = key_groups.current_window
+        }
      ),
 
     awful.key(
@@ -596,7 +713,10 @@ clientkeys = gears.table.join(
             client.maximized = not client.maximized
             client:raise()
         end,
-        { description = "Un/Maximize currently selected window" }
+        { 
+            description = "Un/Maximize currently selected window",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -609,7 +729,10 @@ clientkeys = gears.table.join(
             client.maximized_vertical = not client.maximized_vertical
             client:raise()
         end,
-        { description = "Un/Maximize currently selected window vertically" }
+        { 
+            description = "Un/Maximize currently selected window vertically",
+            group = key_groups.current_window
+        }
     ),
 
     awful.key(
@@ -622,7 +745,10 @@ clientkeys = gears.table.join(
             client.maximized_horizontal = not client.maximized_horizontal
             client:raise()
         end,
-        { description = "Un/Maximize currently selected window horizontally" }
+        { 
+            description = "Un/Maximize currently selected window horizontally",
+            group = key_groups.current_window
+        }
     )
 )
 
