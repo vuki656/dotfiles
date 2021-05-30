@@ -191,6 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
             shape  = gears.shape.rounded_bar,
             bg_normal = colors.transparent,
             bg_focus = colors.transparent,
+            bg_minimize = colors.transparent,
         },
     }
 
