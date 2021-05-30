@@ -59,6 +59,10 @@ awful.layout.layouts = {
 }
 -- }}}
 
+local colors = {
+    transparent = '#2f282829'
+}
+
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
@@ -184,9 +188,9 @@ awful.screen.connect_for_each_screen(function(s)
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         style = {
-            shape_border_width = 1,
-            shape_border_color = '#777777',
             shape  = gears.shape.rounded_bar,
+            bg_normal = colors.transparent,
+            bg_focus = colors.transparent,
         },
     }
 
@@ -372,8 +376,8 @@ client.connect_signal("request::titlebars", function(client)
     }
 
     local style = {
-        bg_normal = '#2f282829',
-        bg_focus = '#2f2828a1',
+        bg_normal = colors.transparent,
+        bg_focus = colors.transparent,
         size = 20,
     }
 

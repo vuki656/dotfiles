@@ -15,8 +15,7 @@ local key_groups = {
     other = "Other",
 }
 
-
-local clientkeys = gears.table.join(
+clientkeys = gears.table.join(
     awful.key(
         { modkey },
         "f",
@@ -155,7 +154,6 @@ local clientkeys = gears.table.join(
     )
 )
 
--- Key bindings
 globalkeys = gears.table.join(
     awful.key(
         { modkey },
