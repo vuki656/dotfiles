@@ -327,71 +327,194 @@ globalkeys = gears.table.join(
         { description = "Focus the next screen" }
     ),
 
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
-              {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
+    awful.key(
+        { modkey },
+        "u",
+        awful.client.urgent.jumpto,
+        { description = "Jump to urgent client" }
+    ),
+
+    awful.key(
+        { modkey },
+        "Tab",
         function ()
             awful.client.focus.history.previous()
+
             if client.focus then
                 client.focus:raise()
             end
         end,
-        {description = "go back", group = "client"}),
+        { description = "Switch between windows in current desktop" }
+     ),
 
-    -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+    awful.key(
+        { modkey },
+        "Return",
+        function () 
+            awful.spawn(terminal) 
+        end,
+       { description = "Open terminal" }
+    ),
 
-    awful.key({ modkey, "Control" }, "n",
-              function ()
-                  local c = awful.client.restore()
-                  -- Focus restored client
-                  if c then
-                    c:emit_signal(
-                        "request::activate", "key.unminimize", {raise = true}
-                    )
-                  end
-              end,
-              {description = "restore minimized", group = "client"}),
+    awful.key(
+       { 
+           modkey,
+           "Control"
+       },
+       "r",
+       awesome.restart,
+       { description = "Restart awesome" }
+     ),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key(
+        { 
+            modkey,
+            "Shift"
+        },
+        "q",
+        awesome.quit,
+        { description = "Quit awesome" }
+     ),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+    awful.key(
+        { modkey },
+        "l",
+        function () 
+            awful.tag.incmwfact(0.05)          
+        end,
+       { description = "Increase master window width factor" }
+    ),
+
+    awful.key(
+        { modkey },
+        "h",
+        function () 
+            awful.tag.incmwfact(-0.05)          
+        end,
+       { description = "Decrease master width factor" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Shift"
+        },
+        "h",
+        function () 
+            awful.tag.incnmaster( 1, nil, true) 
+        end,
+       { description = "Increase the number of master clients" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Shift"
+        },
+        "l",
+        function () 
+            awful.tag.incnmaster(-1, nil, true) 
+        end,
+        { description = "Decrease the number of master clients" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Control"
+        },
+        "h",
+        function () 
+            awful.tag.incncol( 1, nil, true)    
+        end,
+        { description = "Increase the number of columns" }
+    ),
+
+    awful.key(
+        { 
+            modkey, 
+            "Control"
+        },
+        "l",     
+        function () 
+            awful.tag.incncol(-1, nil, true)    
+        end,
+        { description = "Decrease the number of columns" }
+    ),
+
+    awful.key(
+        { modkey },
+        "space",
+        function () 
+            awful.layout.inc(1)                
+        end,
+        { description = "Make selected window only one on the desktop" }
+    ),
+
+    awful.key(
+        { 
+            modkey, 
+            "Shift"   
+        },
+        "space",
+        function () 
+            awful.layout.inc(-1)                
+        end,
+        { description = "Return window from being the only one on desktop to that desktop layout" }
+    ),
+
+    awful.key(
+        { 
+            modkey,
+            "Control"
+        }, 
+        "n",
+        function ()
+            local client = awful.client.restore()
+
+             if client then
+                client:emit_signal(
+                    "request::activate",
+                    "key.unminimize",
+                    { raise = true }
+                )
+           end
+        end,
+        { description = "Restore minimized window" }
+    ),
+
+    awful.key(
+        { modkey },
+        "r",
+        function () 
+            awful.screen.focused().mypromptbox:run()
+        end,
+        { description = "Open run prompt" }
+    ),
+
+    awful.key(
+        { modkey },
+        "x",
+        function ()
+            awful.prompt.run {
+                prompt = "Run Lua code: ",
+                textbox = awful.screen.focused().mypromptbox.widget,
+                exe_callback = awful.util.eval,
+                history_path = awful.util.get_cache_dir() .. "/history_eval"
+            }
+        end,
+        { description = "Open lua execute prompt" }
+    ),
+
+    awful.key(
+        { modkey },
+        "p",
+        function() 
+            menubar.show() 
+        end,
+        { description = "Open menubar" }
+    )
 )
 
 clientkeys = gears.table.join(
@@ -638,5 +761,6 @@ modkey = "Mod4"                                     -- Set modkey to super key(w
 
 awful.spawn.with_shell('~/.screenlayout/default.sh')     							                -- Load screen layout config on boot
 awful.spawn.with_shell('feh --bg-scale ~/wallpapers/mojave/mojave_dynamic_15.jpeg')     			-- Set wallpaper
+awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
 
-os.execute("xset r rate 150 50") 		-- Set repeating keys speed (args => delay, times per second)
+os.execute("xset r rate 150 40") 		-- Set repeating keys speed (args => delay, times per second)
