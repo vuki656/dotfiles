@@ -14,7 +14,7 @@ alias reboot='systemctl reboot'
 
 # Git
 alias gs='git status'
-alias gp='git pull'
+alias gpl='git pull'
 alias gp='git push'
 alias ga='git add'
 alias gaa='git add .'
