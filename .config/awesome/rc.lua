@@ -47,8 +47,8 @@ beautiful.useless_gap = 10
 beautiful.gap_single_client = true
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
+terminal = "alacritty"
+editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Set modkey
@@ -178,11 +178,16 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+                          
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        layout  = {
+            spacing = 5,
+            layout  = wibox.layout.fixed.horizontal
+        },
     }
 
     -- Create a tasklist widget
@@ -199,15 +204,24 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, bg = beautiful.bg_normal .. "00"  })
+    s.mywibox = awful.wibar({ 
+        position = "top",
+        screen = s,
+        bg = beautiful.bg_normal .. "00",
+        height = 25,
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
+            left   = 5,
+            right  = 5,
+            top    = 5,
+            bottom = 5,
+            layout = wibox.container.margin
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
@@ -224,6 +238,8 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
             logout_menu_widget(),
         },
+        top = 5, 
+        bottom = 5,
     }
 end)
 -- }}}
