@@ -17,7 +17,7 @@ require('keys')
 -- Widgets
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
-
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 -- Handle runtime errors after startup
 do
@@ -212,6 +212,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            volume_widget({ widget_type = "arc" }),
             weather_widget({
                 api_key='d8ec854f0c75c3d11b05badeda7346f6',
                 coordinates = { 45.774867,  15.996309 },
