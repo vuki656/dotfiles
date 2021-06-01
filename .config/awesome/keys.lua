@@ -343,7 +343,7 @@ globalkeys = gears.table.join(
         { modkey },
         "Return",
         function () 
-            awful.spawn(terminal) 
+            awful.spawn('alacritty') 
         end,
         { 
             description = "Start terminal",
