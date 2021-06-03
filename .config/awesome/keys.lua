@@ -2,6 +2,11 @@ local gears = require("gears")
 local awful = require("awful")
 local popup = require("awful.hotkeys_popup")
 
+-- TODO: delete fallback later
+modkey = "Mod4"
+
+-- FIXME: some things are not propertly exported from here
+
 ----------------------------------------------------------------------------------------------
 --------------------------------------- CONFIG -----------------------------------------------
 ----------------------------------------------------------------------------------------------
@@ -16,13 +21,9 @@ module.mouse_buttons = {
     down = 5
 }
 
-modkey = "Mod4"
+module.modkey = "Mod4"
 
-----------------------------------------------------------------------------------------------
------------------------------------ DECLARATIONS ---------------------------------------------
-----------------------------------------------------------------------------------------------
-
-local key_groups = {
+module.key_groups = {
     apps = "Applications",
     awesome = "Awesome",
     current_screen = "Current Screen",
@@ -33,9 +34,118 @@ local key_groups = {
     other = "Other",
 }
 
-clientkeys = gears.table.join(
+
+----------------------------------------------------------------------------------------------
+------------------------------------ TAG LIST BUTTONS ----------------------------------------
+----------------------------------------------------------------------------------------------
+
+module.tasklist_buttons = gears.table.join(
+    -- Focus and or toggle clicked task
+    awful.button(
+        {},
+        module.mouse_buttons.left,
+        function (client)
+            client:emit_signal(
+                "request::activate",
+                "mouse_click",
+                { raise = true } 
+            )
+        end
+    ),
+    -- Move window on drag
+    awful.button(
+        { module.modkey },
+        module.mouse_buttons.left,
+        function (client)
+            client:emit_signal(
+                "request::activate",
+                "mouse_click",
+                { raise = true }
+            )
+
+            awful.mouse.client.move(client)
+        end
+    ),
+    -- Resize window 
+    awful.button(
+        { module.modkey },
+        module.mouse_buttons.right,
+        function (client)
+            client:emit_signal(
+                "request::activate",
+                "mouse_click",
+                { raise = true }
+            )
+
+            awful.mouse.client.resize(client)
+        end
+    )
+)
+
+----------------------------------------------------------------------------------------------
+------------------------------------ TASK LIST BUTTONS ---------------------------------------
+----------------------------------------------------------------------------------------------
+
+module.taglist_buttons = gears.table.join(
+    -- Switch to clicked tag
+    awful.button(
+        {},
+        module.mouse_buttons.left,
+        function(tag)
+            tag:view_only() 
+        end
+    ),
+    -- Move focues window to clicked tag
+    awful.button(
+        { module.modkey },
+        module.mouse_buttons.left,
+        function(tag)
+            if client.focus then
+                client.focus:move_to_tag(tag)
+            end
+        end
+    ),
+    -- Display windows from clicked tag in current screen on rmb click
+    awful.button(
+        {}, 
+        module.mouse_buttons.right,
+        awful.tag.viewtoggle
+    ),
+    -- TODO: Description of what it does
+    awful.button(
+        { module.modkey },
+        module.mouse_buttons.right,
+        function(tag)
+            if client.focus then
+                client.focus:toggle_tag(tag)
+            end
+        end
+    ),
+    -- Go to next tag on scroll up
+    awful.button(
+        {},
+        module.mouse_buttons.up,
+        function(tag) 
+            awful.tag.viewnext(tag.screen)
+        end
+    ),
+    -- Go to previous tag on scroll down
+    awful.button(
+        {},
+        module.mouse_buttons.down,
+        function(tag) 
+            awful.tag.viewprev(tag.screen) 
+        end
+    )
+)
+
+----------------------------------------------------------------------------------------------
+---------------------------------- CLIENT (WINDOW) KEYS --------------------------------------
+----------------------------------------------------------------------------------------------
+
+module.client_keys = gears.table.join(
     awful.key(
-        { modkey },
+        { module.modkey },
         "f",
         function (client)
             client.fullscreen = not client.fullscreen
@@ -43,13 +153,13 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Toggle currently selected window fullscreen",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
      ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"   
         },
         "c",
@@ -58,26 +168,26 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Close currently selected window",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         {
-            modkey,
+            module.modkey,
             "Control"
         },
         "space",
         awful.client.floating.toggle,
         { 
             description = "Toggle currently selected window to floating",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         {
-            modkey,
+            module.modkey,
             "Control"
         },
         "Return",
@@ -86,48 +196,48 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Make currently selected window master",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "o",
         function (client) 
             client:move_to_screen()               
         end,
         { 
             description = "Move currently selected window to next screen",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "t",
         function (client) 
             client.ontop = not client.ontop
         end,
         { 
             description = "Toggle current selected window on top",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "n",
         function (client)
             client.minimized = true
         end,
         { 
             description = "Minimize currently selected window",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
      ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "m",
         function (client)
             client.maximized = not client.maximized
@@ -135,13 +245,13 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Un/Maximize currently selected window",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         {
-            modkey,
+            module.modkey,
             "Control" 
         },
         "m",
@@ -151,13 +261,13 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Un/Maximize currently selected window vertically",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "m",
@@ -167,91 +277,95 @@ clientkeys = gears.table.join(
         end,
         { 
             description = "Un/Maximize currently selected window horizontally",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     )
 )
 
-globalkeys = gears.table.join(
+----------------------------------------------------------------------------------------------
+--------------------------------------- GLOBAL KEYS ------------------------------------------
+----------------------------------------------------------------------------------------------
+
+module.global_keys = gears.table.join(
     awful.key(
-        { modkey },
+        { module.modkey },
         "c",
         function () 
             awful.util.spawn_with_shell("google-chrome --password-store=gnome")
         end,
         { 
             description = "Start chrome",
-            group = key_groups.apps
+            group = module.key_groups.apps
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "s",
         popup.show_help,
         { 
             description="Open key combo help",
-            group = key_groups.other
+            group = module.key_groups.other
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "Left",
         awful.tag.viewprev,
         { 
             description = "Go to previous desktop",
-            group = key_groups.tag
+            group = module.key_groups.tag
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "Right",
         awful.tag.viewnext,
        { 
            description = "Go to next tag",
-           group = key_groups.tag
+           group = module.key_groups.tag
        }
     ),
 
     awful.key(
-        { modkey }, 
+        { module.modkey }, 
         "Escape",
         awful.tag.history.restore,
         { 
             description = "Go to last visited tag",
-            group = key_groups.tag
+            group = module.key_groups.tag
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "j",
         function ()
             awful.client.focus.byidx(-1)
         end,
         { 
             description = "Focus previous window in current screen",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "k",
         function ()
             awful.client.focus.byidx(1)
         end,
         { 
             description = "Focus next window in current screen",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "j",
@@ -260,13 +374,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Swap with previous window in current screen",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "k",
@@ -275,13 +389,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Swap with next window in current screen",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
      ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Control"
         },
         "j",
@@ -290,13 +404,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Focus previous screen",
-            group = key_groups.screen
+            group = module.key_groups.screen
         }
     ),
 
     awful.key(
         {
-            modkey,
+            module.modkey,
             "Control"
         },
         "k",
@@ -305,22 +419,22 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Focus next screen",
-            group = key_groups.screen
+            group = module.key_groups.screen
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "u",
         awful.client.urgent.jumpto,
         { 
             description = "Jump to urgent client",
-            group = key_groups.other
+            group = module.key_groups.other
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -331,76 +445,76 @@ globalkeys = gears.table.join(
         end,
         {
             description = "Switch between windows in current screen",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
      ),
 
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "Return",
         function () 
             awful.spawn('alacritty') 
         end,
         { 
             description = "Start terminal",
-            group = key_groups.apps
+            group = module.key_groups.apps
         }
     ),
 
     awful.key(
        { 
-           modkey,
+           module.modkey,
            "Control"
        },
        "r",
        awesome.restart,
        { 
            description = "Restart awesome",
-           group = key_groups.awesome
+           group = module.key_groups.awesome
        }
      ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "q",
         awesome.quit,
         { 
             description = "Quit awesome",
-            group = key_groups.awesome
+            group = module.key_groups.awesome
         }
      ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "l",
         function () 
             awful.tag.incmwfact(0.05)          
         end,
         { 
             description = "Increase current window width",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "h",
         function () 
             awful.tag.incmwfact(-0.05)          
         end,
         { 
             description = "Decrease current window width",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "h",
@@ -409,13 +523,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Increase the number of master clients",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Shift"
         },
         "l",
@@ -424,13 +538,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Decrease the number of master clients",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Control"
         },
         "h",
@@ -439,13 +553,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Increase the number of columns",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
         { 
-            modkey, 
+            module.modkey, 
             "Control"
         },
         "l",     
@@ -454,25 +568,25 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Decrease the number of columns",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "space",
         function () 
             awful.layout.inc(1)                
         end,
         { 
             description = "Make selected window only one on the screen",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         { 
-            modkey, 
+            module.modkey, 
             "Shift"   
         },
         "space",
@@ -481,13 +595,13 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Return window from being the only one on desktop to that desktop layout",
-            group = key_groups.current_window
+            group = module.key_groups.current_window
         }
     ),
 
     awful.key(
         { 
-            modkey,
+            module.modkey,
             "Control"
         }, 
         "n",
@@ -504,24 +618,24 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Restore minimized window",
-            group = key_groups.current_screen
+            group = module.key_groups.current_screen
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "r",
         function () 
             awful.screen.focused().mypromptbox:run()
         end,
         { 
             description = "Open run prompt",
-            group = key_groups.prompts
+            group = module.key_groups.prompts
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "x",
         function ()
             awful.prompt.run {
@@ -533,30 +647,30 @@ globalkeys = gears.table.join(
         end,
         { 
             description = "Open lua execute prompt",
-            group = key_groups.prompts
+            group = module.key_groups.prompts
         }
     ),
 
     awful.key(
-        { modkey },
+        { module.modkey },
         "p",
         function() 
             menubar.show() 
         end,
         { 
             description = "Open menubar",
-            group = key_groups.other
+            group = module.key_groups.other
         }
     )
 )
 
 -- Bind key numbers to tags
 for i = 1, 9 do
-    globalkeys = gears.table.join(
-        globalkeys,
+    global_keys = gears.table.join(
+        global_keys,
 
         awful.key(
-            { modkey },
+            { module.modkey },
             "#" .. i + 9,
             function ()
                 local screen = awful.screen.focused()
@@ -568,13 +682,13 @@ for i = 1, 9 do
             end,
             { 
                 description = "Go to tag #" .. i,
-                group = key_groups.tag
+                group = module.key_groups.tag
             }
         ),
 
         awful.key(
             { 
-                modkey,
+                module.modkey,
                 "Control" 
             },
             "#" .. i + 9,
@@ -588,13 +702,13 @@ for i = 1, 9 do
             end,
             {
                 description = "Display tag #" .. i .. " in current tag",
-                group = key_groups.tag
+                group = module.key_groups.tag
             }
         ),
     
         awful.key(
             {
-                modkey,
+                module.modkey,
                 "Shift"
             },
             "#" .. i + 9,
@@ -609,13 +723,13 @@ for i = 1, 9 do
             end,
             {
                 description = "Move focused window to tag #"..i,
-                group = key_groups.tag
+                group = module.key_groups.tag
             }
         ),
     
         awful.key(
             {
-                modkey,
+                module.modkey,
                 "Control",
                 "Shift"
             },
@@ -631,7 +745,7 @@ for i = 1, 9 do
             end,
             {
                 description = "Make currently selected window sticky on tag #" .. i,
-                group = key_groups.tag
+                group = module.key_groups.tag
             }
         )
     )

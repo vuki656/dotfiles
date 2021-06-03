@@ -13,123 +13,17 @@ local colors = {
     transparent = '#2f282829'
 }
 
-local function set_wallpaper(s)
-    awful.spawn.with_shell('feh --bg-scale ~/wallpapers/forest.jpg') 
-end
-
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
-
-local taglist_buttons = gears.table.join(
-    -- Switch to clicked tag
-    awful.button(
-        {},
-        keys.mouse_buttons.left,
-        function(tag)
-            tag:view_only() 
-        end
-    ),
-    -- Move focues window to clicked tag
-    awful.button(
-        { modkey },
-        keys.mouse_buttons.left,
-        function(tag)
-            if client.focus then
-                client.focus:move_to_tag(tag)
-            end
-        end
-    ),
-    -- Display windows from clicked tag in current screen on rmb click
-    awful.button(
-        {}, 
-        keys.mouse_buttons.right,
-        awful.tag.viewtoggle
-    ),
-    -- TODO: Description of what it does
-    awful.button(
-        { modkey },
-        keys.mouse_buttons.right,
-        function(tag)
-            if client.focus then
-                client.focus:toggle_tag(tag)
-            end
-        end
-    ),
-    -- Go to next tag on scroll up
-    awful.button(
-        {},
-        keys.mouse_buttons.up,
-        function(tag) 
-            awful.tag.viewnext(tag.screen)
-        end
-    ),
-    -- Go to previous tag on scroll down
-    awful.button(
-        {},
-        keys.mouse_buttons.down,
-        function(tag) 
-            awful.tag.viewprev(tag.screen) 
-        end
-    )
-)
-
-local tasklist_buttons = gears.table.join(
-    -- Toggle clicked window
-    awful.button(
-        {},
-        keys.mouse_buttons.left,
-        function (current_client)
-            if current_client == client.focus then
-                current_client.minimized = true
-            else
-                current_client:emit_signal(
-                    "request::activate",
-                    "tasklist",
-                    { raise = true }
-                )
-            end
-        end
-    ),
-    -- Open window menu on rmb click
-    awful.button(
-        {},
-        keys.mouse_buttons.right,
-        function()
-            awful.menu.client_list({ theme = { width = 250 } })
-        end
-    ),
-    -- Focus next window on scroll up
-    awful.button(
-        {},
-        keys.mouse_buttons.up,
-        function ()
-            awful.client.focus.byidx(1)
-        end
-    ),
-    -- Focus previous window on scroll down
-    awful.button(
-        {},
-        keys.mouse_buttons.down,
-        function ()
-            awful.client.focus.byidx(-1)
-        end
-    )
-)
-
 awful.screen.connect_for_each_screen(function(s)
-    set_wallpaper(s)
-
     awful.tag(
         { "1", "2", "3", "4", "5", "6", "7", "8", "9" }, 
         s,
         awful.layout.layouts[1]
     )
-
                           
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons,
+        buttons = keys.taglist_buttons,
         layout  = {
             spacing = 5,
             layout  = wibox.layout.fixed.horizontal
@@ -139,7 +33,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
+        buttons = keys.tasklist_buttons,
         style = {
             shape  = gears.shape.rounded_bar,
             bg_normal = colors.transparent,
