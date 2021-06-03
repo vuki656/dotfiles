@@ -22,7 +22,6 @@ awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs1
 
 os.execute("xset r rate 150 40") 		-- Set repeating keys speed (args => delay, times per second)
 
-
 ----------------------------------------------------------------------------------------------
 --------------------------------------- WALLPAPER --------------------------------------------
 ----------------------------------------------------------------------------------------------
@@ -36,7 +35,7 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Set wallpaper for each screen
-awful.screen.connect_for_each_screen(function(s) 
+awful.screen.connect_for_each_screen(function() 
     set_wallpaper()
 end)
 
