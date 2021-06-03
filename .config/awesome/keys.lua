@@ -843,4 +843,7 @@ for i = 1, 9 do
     )
 end
 
+-- Register global keys
+root.keys(module.global_keys)
+
 return module
