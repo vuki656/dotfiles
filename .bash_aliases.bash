@@ -1,6 +1,7 @@
 # Terminal
 alias c='clear'
 alias ..='cd ..'
+alias e='exit'
 
 # Apt
 alias update='sudo apt update'
