@@ -17,26 +17,22 @@ require("awful.autofocus")
 local keys = require('keys')
 
 require('utils.catch_errors')
-require('theme')
 require('menu')
 require('sets')
 require('top_bar')
 
-
-modkey = "Mod4"
-
 root.keys(keys.global_keys)
 
--- Rules to apply to new clients 
 awful.rules.rules = {
     { 
+        rule = { },
         properties = { 
-            border_width = 0,
+            border_width = beautiful.border_width,
             border_color = beautiful.border_normal,
             focus = awful.client.focus.filter,
             raise = true,
             keys = keys.client_keys,
-            buttons = keys.window_buttons,
+            buttons = keys.client_buttons,
             screen = awful.screen.preferred,
             placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
@@ -179,8 +175,6 @@ end)
 ----------------------------------------------------------------------
 --------------------------- CUSTOM CONFIG ----------------------------
 ----------------------------------------------------------------------
-modkey = "Mod4"                                     -- Set modkey to super key(windows key)
-
 awful.spawn.with_shell('~/.screenlayout/default.sh')     							                -- Load screen layout config on boot
 awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
 

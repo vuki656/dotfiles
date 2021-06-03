@@ -34,13 +34,64 @@ module.key_groups = {
     other = "Other",
 }
 
-
 ----------------------------------------------------------------------------------------------
------------------------------------- TAG LIST BUTTONS ----------------------------------------
+-------------------------------------- TASKLIST BUTTONS ----------------------------------------
 ----------------------------------------------------------------------------------------------
 
+-- TODO: GOOD
 module.tasklist_buttons = gears.table.join(
-    -- Focus and or toggle clicked task
+    -- Toggle visible/minimized on click
+    awful.button(
+        {},
+        module.mouse_buttons.left,
+        function (current_client)
+            if current_client == client.focus then
+                current_client.minimized = true
+            else
+                current_client:emit_signal(
+                    "request::activate",
+                    "tasklist",
+                    { raise = true }
+                )
+            end
+        end
+    ),
+
+    -- Open menu for task
+    awful.button(
+        {},
+        module.mouse_buttons.right,
+        function()
+            awful.menu.client_list({ theme = { width = 250 } })
+        end
+    ),
+
+    -- Focus next task on scroll up
+    awful.button(
+        {},
+        module.mouse_buttons.up,
+        function ()
+            awful.client.focus.byidx(1)
+        end
+    ),
+    
+    -- Focus previous task on scroll down
+    awful.button(
+        {}, 
+        module.mouse_buttons.down,
+        function ()
+            awful.client.focus.byidx(-1)
+        end
+    )
+)
+
+----------------------------------------------------------------------------------------------
+-------------------------------------- CLIENT BUTTONS ----------------------------------------
+----------------------------------------------------------------------------------------------
+
+-- TODO: good
+module.client_buttons = gears.table.join(
+    -- Focus and or toggle clicked client
     awful.button(
         {},
         module.mouse_buttons.left,
@@ -52,7 +103,7 @@ module.tasklist_buttons = gears.table.join(
             )
         end
     ),
-    -- Move window on drag
+    -- Move client on drag
     awful.button(
         { module.modkey },
         module.mouse_buttons.left,
@@ -66,7 +117,7 @@ module.tasklist_buttons = gears.table.join(
             awful.mouse.client.move(client)
         end
     ),
-    -- Resize window 
+    -- Resize client 
     awful.button(
         { module.modkey },
         module.mouse_buttons.right,
@@ -83,9 +134,10 @@ module.tasklist_buttons = gears.table.join(
 )
 
 ----------------------------------------------------------------------------------------------
------------------------------------- TASK LIST BUTTONS ---------------------------------------
+------------------------------------- TAG LIST BUTTONS ---------------------------------------
 ----------------------------------------------------------------------------------------------
 
+-- TODO: GOOD
 module.taglist_buttons = gears.table.join(
     -- Switch to clicked tag
     awful.button(
@@ -145,7 +197,7 @@ module.taglist_buttons = gears.table.join(
 
 module.client_keys = gears.table.join(
     awful.key(
-        { module.modkey },
+        { modkey },
         "f",
         function (client)
             client.fullscreen = not client.fullscreen
@@ -286,6 +338,7 @@ module.client_keys = gears.table.join(
 --------------------------------------- GLOBAL KEYS ------------------------------------------
 ----------------------------------------------------------------------------------------------
 
+-- TODO: GOOD
 module.global_keys = gears.table.join(
     awful.key(
         { module.modkey },
@@ -608,13 +661,13 @@ module.global_keys = gears.table.join(
         function ()
             local client = awful.client.restore()
 
-             if client then
+            if client then
                 client:emit_signal(
                     "request::activate",
                     "key.unminimize",
                     { raise = true }
                 )
-           end
+            end
         end,
         { 
             description = "Restore minimized window",
@@ -666,8 +719,8 @@ module.global_keys = gears.table.join(
 
 -- Bind key numbers to tags
 for i = 1, 9 do
-    global_keys = gears.table.join(
-        global_keys,
+    module.global_keys = gears.table.join(
+        module.global_keys,
 
         awful.key(
             { module.modkey },
