@@ -17,15 +17,24 @@ local colors = {
     transparent = '#2f282829'
 }
 
-awful.screen.connect_for_each_screen(function(s)
+awful.screen.connect_for_each_screen(function(screen)
     awful.tag(
         { "1", "2", "3", "4", "5", "6", "7", "8", "9" }, 
-        s,
+        screen,
         awful.layout.layouts[1]
     )
+
+    -- Create topbar
+    screen.mywibox = awful.wibar({ 
+        position = "top",
+        screen = screen,
+        bg = beautiful.bg_normal .. "00",
+        height = 25,
+    })
                           
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
+    -- Create taglist
+    screen.mytaglist = awful.widget.taglist {
+        screen  = screen,
         filter  = awful.widget.taglist.filter.all,
         buttons = keys.taglist_buttons,
         layout  = {
@@ -34,8 +43,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
-    s.mytasklist = awful.widget.tasklist {
-        screen = s,
+    -- Create taglist
+    screen.mytasklist = awful.widget.tasklist {
+        screen = screen,
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = keys.tasklist_buttons,
         style = {
@@ -46,16 +56,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
-    s.mywibox = awful.wibar({ 
-        position = "top",
-        screen = s,
-        bg = beautiful.bg_normal .. "00",
-        height = 25,
-    })
-
+    -- Configure left side widgets
     local left_widgets = { 
-        s.mytaglist,
-        s.mypromptbox,
+        screen.mytaglist,
         left = 5,
         right = 5,
         top = 5,
@@ -63,8 +66,8 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.container.margin,
     }
 
-    s.layout_button = awful.widget.layoutbox(s)
-    s.layout_button:buttons(
+    screen.layout_button = awful.widget.layoutbox(s)
+    screen.layout_button:buttons(
         gears.table.join(
             awful.button(
                 {},
@@ -83,8 +86,10 @@ awful.screen.connect_for_each_screen(function(s)
         )
     )
 
-    local middle_widgets = gears.table.join(s.mytasklist)
+    -- Configure middle widgets
+    local middle_widgets = gears.table.join(screen.mytasklist)
 
+    -- Configure right side widgets
     local right_widgets = { 
         layout = wibox.layout.fixed.horizontal,
         volume_widget({ widget_type = "arc" }),
@@ -96,11 +101,11 @@ awful.screen.connect_for_each_screen(function(s)
             show_hourly_forecast = true,
         }),
         wibox.widget.textclock(),
-        s.layout_button,
+        screen.layout_button,
         logout_menu_widget(),
     }
 
-    s.mywibox:setup {
+    screen.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         top = 5, 
         bottom = 5,
