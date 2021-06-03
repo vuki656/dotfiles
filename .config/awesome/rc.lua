@@ -84,7 +84,7 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     c.shape = function(corner_radius, width, height)
-        gears.shape.rounded_rect(corner_radius, width, height, 5)
+        gears.shape.rounded_rect(corner_radius, width, height, 10)
     end
 
     -- Set the windows at the slave,
@@ -101,46 +101,13 @@ end)
 
 -- Window titlebar
 client.connect_signal("request::titlebars", function(client)
-    local left_mouse_button = 1
-    local right_mouse_button = 3
-
-    local drag_button = awful.button(
-        {},
-        left_mouse_button,
-        function()
-            client:emit_signal(
-                "request::activate",
-                "titlebar",
-                { raise = true }
-            )
-
-            awful.mouse.client.move(client)
-        end
-    )
-
-    local resize_button = awful.button(
-        {},
-        right_mouse_button,
-        function()
-            client:emit_signal(
-                "request::activate",
-                "titlebar",
-                { raise = true }
-            )
-
-            awful.mouse.client.resize(client)
-        end
-    )
-
-    local buttons = gears.table.join(drag_button, resize_button)
-
     local left_section = { 
         layout  = wibox.layout.fixed.horizontal,
-        buttons = buttons
+        buttons = keys.client_toolbar_buttons(client)
     }
 
     local midddle_section = { 
-        buttons = buttons,
+        buttons = keys.client_toolbar_buttons(client),
         layout  = wibox.layout.flex.horizontal
     }
 

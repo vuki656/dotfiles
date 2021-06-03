@@ -5,8 +5,6 @@ local popup = require("awful.hotkeys_popup")
 -- TODO: delete fallback later
 modkey = "Mod4"
 
--- FIXME: some things are not propertly exported from here
-
 ----------------------------------------------------------------------------------------------
 --------------------------------------- CONFIG -----------------------------------------------
 ----------------------------------------------------------------------------------------------
@@ -38,7 +36,6 @@ module.key_groups = {
 -------------------------------------- TASKLIST BUTTONS ----------------------------------------
 ----------------------------------------------------------------------------------------------
 
--- TODO: GOOD
 module.tasklist_buttons = gears.table.join(
     -- Toggle visible/minimized on click
     awful.button(
@@ -89,7 +86,6 @@ module.tasklist_buttons = gears.table.join(
 -------------------------------------- CLIENT BUTTONS ----------------------------------------
 ----------------------------------------------------------------------------------------------
 
--- TODO: good
 module.client_buttons = gears.table.join(
     -- Focus and or toggle clicked client
     awful.button(
@@ -103,7 +99,8 @@ module.client_buttons = gears.table.join(
             )
         end
     ),
-    -- Move client on drag
+
+    -- Move client on click & drag anywhere in client
     awful.button(
         { module.modkey },
         module.mouse_buttons.left,
@@ -117,7 +114,8 @@ module.client_buttons = gears.table.join(
             awful.mouse.client.move(client)
         end
     ),
-    -- Resize client 
+
+    -- Resize client on click & drag anywhere in client
     awful.button(
         { module.modkey },
         module.mouse_buttons.right,
@@ -134,10 +132,47 @@ module.client_buttons = gears.table.join(
 )
 
 ----------------------------------------------------------------------------------------------
+-------------------------------- CLIENT TOOLBAR BUTTONS --------------------------------------
+----------------------------------------------------------------------------------------------
+
+module.client_toolbar_buttons = function (client) 
+    return gears.table.join(
+        -- Move client on click & drag in toolbar
+        awful.button(
+            {},
+            module.mouse_buttons.left,
+            function()
+                client:emit_signal(
+                    "request::activate",
+                    "titlebar",
+                    { raise = true }
+                )
+
+                awful.mouse.client.move(client)
+            end
+        ),
+
+        -- Resize client on click & drag in toolbar
+        awful.button(
+            {},
+            module.mouse_buttons.right,
+            function()
+                client:emit_signal(
+                    "request::activate",
+                    "titlebar",
+                    { raise = true }
+                )
+
+                awful.mouse.client.resize(client)
+            end
+        )
+    )
+end
+
+----------------------------------------------------------------------------------------------
 ------------------------------------- TAG LIST BUTTONS ---------------------------------------
 ----------------------------------------------------------------------------------------------
 
--- TODO: GOOD
 module.taglist_buttons = gears.table.join(
     -- Switch to clicked tag
     awful.button(
@@ -147,6 +182,7 @@ module.taglist_buttons = gears.table.join(
             tag:view_only() 
         end
     ),
+    
     -- Move focues window to clicked tag
     awful.button(
         { module.modkey },
@@ -157,12 +193,14 @@ module.taglist_buttons = gears.table.join(
             end
         end
     ),
+
     -- Display windows from clicked tag in current screen on rmb click
     awful.button(
         {}, 
         module.mouse_buttons.right,
         awful.tag.viewtoggle
     ),
+
     -- TODO: Description of what it does
     awful.button(
         { module.modkey },
@@ -173,6 +211,7 @@ module.taglist_buttons = gears.table.join(
             end
         end
     ),
+
     -- Go to next tag on scroll up
     awful.button(
         {},
@@ -181,6 +220,7 @@ module.taglist_buttons = gears.table.join(
             awful.tag.viewnext(tag.screen)
         end
     ),
+
     -- Go to previous tag on scroll down
     awful.button(
         {},
@@ -192,7 +232,7 @@ module.taglist_buttons = gears.table.join(
 )
 
 ----------------------------------------------------------------------------------------------
----------------------------------- CLIENT (WINDOW) KEYS --------------------------------------
+--------------------------------------- CLIENT KEY -------------------------------------------
 ----------------------------------------------------------------------------------------------
 
 module.client_keys = gears.table.join(
@@ -338,7 +378,6 @@ module.client_keys = gears.table.join(
 --------------------------------------- GLOBAL KEYS ------------------------------------------
 ----------------------------------------------------------------------------------------------
 
--- TODO: GOOD
 module.global_keys = gears.table.join(
     awful.key(
         { module.modkey },
