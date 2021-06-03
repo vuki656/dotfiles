@@ -1,21 +1,12 @@
--- Core
+-- Imports
 pcall(require, "luarocks.loader")
-
 local gears = require("gears")
 local awful = require("awful")
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
-local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- Plugins
 require("awful.autofocus")
 
 -- Custom Config
-local keys = require('keys')
-
 require('utils.catch_errors')
 require('menu')
 require('sets')

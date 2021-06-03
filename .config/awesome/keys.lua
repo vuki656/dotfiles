@@ -1,9 +1,10 @@
+----------------------------------------------------------------------------------------------
+--------------------------------- BUTTONS AND REMAPS -----------------------------------------
+----------------------------------------------------------------------------------------------
+
 local gears = require("gears")
 local awful = require("awful")
 local popup = require("awful.hotkeys_popup")
-
--- TODO: delete fallback later
-modkey = "Mod4"
 
 ----------------------------------------------------------------------------------------------
 --------------------------------------- CONFIG -----------------------------------------------
@@ -237,7 +238,7 @@ module.taglist_buttons = gears.table.join(
 
 module.client_keys = gears.table.join(
     awful.key(
-        { modkey },
+        { module.modkey },
         "f",
         function (client)
             client.fullscreen = not client.fullscreen
