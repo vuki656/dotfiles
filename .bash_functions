@@ -7,7 +7,6 @@ clean() {
     sudo apt autoremove
 
     clear
-    echo "== System Clean =="
 }
 
 ## Git Commit
