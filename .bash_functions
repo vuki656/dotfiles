@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Clean System
 clean() {
     sudo apt clean

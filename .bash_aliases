@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Terminal
 alias c='clear'
 alias ..='cd ..'
