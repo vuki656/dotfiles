@@ -378,6 +378,17 @@ module.client_keys = gears.table.join(
 module.global_keys = gears.table.join(
     awful.key(
         { module.modkey },
+        "p",
+        function ()
+            awful.util.spawn_with_shell("rofi -show drun")
+        end,
+        { 
+            description = "Open dmenu",
+            group = module.key_groups.other
+        }
+    ),
+    awful.key(
+        { module.modkey },
         "c",
         function () 
             awful.util.spawn_with_shell("google-chrome --password-store=gnome")
@@ -737,18 +748,6 @@ module.global_keys = gears.table.join(
         { 
             description = "Open lua execute prompt",
             group = module.key_groups.prompts
-        }
-    ),
-
-    awful.key(
-        { module.modkey },
-        "p",
-        function() 
-            menubar.show() 
-        end,
-        { 
-            description = "Open menubar",
-            group = module.key_groups.other
         }
     )
 )

@@ -5,3 +5,5 @@
     - `cd ~/.config/awesome`
     - `git clone https://github.com/streetturtle/awesome-wm-widgets`
     - `wget -P ~/.config/awesome/ https://raw.githubusercontent.com/rxi/json.lua/master/json.lua`
+3. Install `rofi`
+    - `sudo apt-get install rofi`
