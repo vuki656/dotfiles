@@ -7,7 +7,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local vars = requireA('env_vars')
+local vars = require('env_vars')
 local keys = require('keys')
 
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
