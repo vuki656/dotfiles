@@ -7,6 +7,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
+local vars = requireA('env_vars')
 local keys = require('keys')
 
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
@@ -94,7 +95,7 @@ awful.screen.connect_for_each_screen(function(screen)
         layout = wibox.layout.fixed.horizontal,
         volume_widget({ widget_type = "arc" }),
         weather_widget({
-            api_key='d8ec854f0c75c3d11b05badeda7346f6',
+            api_key = vars.weather_api_key,
             coordinates = { 45.774867,  15.996309 },
             time_format_12h = true,
             units = 'metric',

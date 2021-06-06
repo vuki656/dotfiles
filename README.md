@@ -10,3 +10,13 @@ Apts
     - `wget -P ~/.config/awesome/ https://raw.githubusercontent.com/rxi/json.lua/master/json.lua`
 3. Install `rofi`
     - `sudo apt-get install rofi`
+4. Setup weather widget
+    - Create `env_vars.lua` file in `awesome` folder
+    - Put the following inside and grab a key [HERE](https://home.openweathermap.org/api_keys)
+    ```lua
+        local module = {}
+
+        module.weather_api_key = "key"
+
+        return module
+    ```
