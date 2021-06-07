@@ -20,3 +20,6 @@ Apts
 
         return module
     ```
+5. Install `luarocks`
+    - Follow sumenko stuff
+    - Run `./configure --with-lua-include=/usr/include/lua5.1` when configuring luarocks
