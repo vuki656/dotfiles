@@ -17,10 +17,10 @@ require('rules')
 
 -- Function to execute when a new client appears
 client.connect_signal("manage", function (client)
-    
+
     -- Round client corners
-    client.shape = function(corner_radius, width, height)
-        gears.shape.rounded_rect(corner_radius, width, height, 10)
+    client.shape = function(cairo, width, height)
+        gears.shape.rounded_rect(cairo, width, height, 10)
     end
 
     --  Set client as slave if master exists, else make master
