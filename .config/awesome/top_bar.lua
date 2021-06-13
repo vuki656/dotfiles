@@ -6,25 +6,13 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 
-local vars = require('env_vars')
-local keys = require('keys')
+local vars   = require('env_vars')
+local keys   = require('keys')
+local colors = require('utils.colors')
 
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local weather_widget     = require("awesome-wm-widgets.weather-widget.weather")
 local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
-
-local colors = {
-    transparent     = '#2f282829',
-    background      = "#282c34",
-    lightBackground = "#3C4048",
-    green           = "#89ca78",
-    purple          = "#d55fde",
-    yellow          = "#e5c07b",
-    blue            = "#61afef",
-    white           = "#a5afbe",
-    orange          = "#d19a66",
-    red             = "#ef596f",
-}
 
 awful.screen.connect_for_each_screen(function(screen)
     awful.tag(
@@ -37,7 +25,7 @@ awful.screen.connect_for_each_screen(function(screen)
     screen.mywibox = awful.wibar({ 
         position = "top",
         screen   = screen,
-        bg       = colors.transparent,
+        bg       = colors.blue_dark_transparent,
         height   = 30,
     })
 
@@ -68,6 +56,12 @@ awful.screen.connect_for_each_screen(function(screen)
         },
         style = {
             font = "11",
+            bg_occupied = colors.transparent,
+            bg_empty = colors.transparent,
+            bg_focus = colors.green,
+            fg_empty = colors.white,
+            fg_occupied = colors.white,
+            fg_focus = colors.blue_dark,
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
             end
@@ -82,10 +76,10 @@ awful.screen.connect_for_each_screen(function(screen)
         style = {
             tasklist_disable_icon = true,
             bg_normal             = colors.transparent,
-            fg_normal             = colors.white,
             bg_focus              = colors.transparent,
-            fg_forcus             = colors.white,
             bg_minimize           = colors.transparent,
+            fg_normal             = colors.white,
+            fg_forcus             = colors.white,
             fg_minimize           = colors.white,
         },
     }
@@ -100,7 +94,7 @@ awful.screen.connect_for_each_screen(function(screen)
         layout = wibox.container.margin,
     }
 
-    screen.layout_button = awful.widget.layoutbox(s)
+    screen.layout_button = awful.widget.layoutbox(screen)
     screen.layout_button:buttons(
         gears.table.join(
             awful.button(

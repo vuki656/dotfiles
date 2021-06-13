@@ -6,6 +6,8 @@ local keys = require('keys')
 local awful = require("awful")
 local wibox = require("wibox")
 
+local colors = require('utils.colors')
+
 client.connect_signal("request::titlebars", function(client)
     local left_section = { 
         layout  = wibox.layout.fixed.horizontal,
@@ -25,8 +27,8 @@ client.connect_signal("request::titlebars", function(client)
     }
 
     local style = {
-        bg_normal = '#1a1a1b85',
-        bg_focus = '#1a1a1bab',
+        bg_focus   = colors.blue_light_transparet,
+        bg_normal  = colors.blue_dark_transparent,
         size = 20,
     }
 
