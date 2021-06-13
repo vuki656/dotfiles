@@ -33,7 +33,7 @@ awful.screen.connect_for_each_screen(function(screen)
         screen  = screen,
         filter  = awful.widget.taglist.filter.all,
         buttons = keys.taglist_buttons,
-        layout   = {
+        layout  = {
             spacing = 5,
             layout  = wibox.layout.flex.horizontal,
         },
@@ -119,8 +119,8 @@ awful.screen.connect_for_each_screen(function(screen)
     -- Configure right side widgets
     local right_widgets = { 
         layout = wibox.layout.fixed.horizontal,
-        volume_widget({ widget_type = "arc" }),
         temperature_widget(),
+        volume_widget({ widget_type = "arc" }),
         wibox.widget.textclock(),
         screen.layout_button,
         logout_menu_widget(),

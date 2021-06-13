@@ -1,7 +1,10 @@
 local watch = require("awful.widget.watch")
 local json = require("json")
 local wibox = require("wibox")
+local gears = require("gears")
+local beautiful = require("beautiful")
 
+local colors = require('utils.colors')
 local env_vars = require('env_vars')
 
 local api_call =
@@ -23,19 +26,32 @@ local function worker()
         {
             {
                 {
-                    id = 'txt',
-                    widget = wibox.widget.textbox
+                    {
+                        id = 'txt',
+                        widget = wibox.widget.textbox,
+                        font = beautiful.font .. " 11",
+                    },
+                    layout = wibox.layout.fixed.horizontal,
                 },
-                layout = wibox.layout.fixed.horizontal,
+                left  = 5,
+                right = 5,
+                widget = wibox.container.margin
             },
-            left = 10,
-            right = 10,
-            layout = wibox.container.margin
+            layout = wibox.container.background,
+            bg = colors.red,
+            fg = colors.blue_dark,
+            shape = function(cairo, width, height)
+                gears.shape.rounded_rect(cairo, width, height, 3)
+            end,
         },
-        widget = wibox.container.background,
         set_text = function(self, text)
             self:get_children_by_id('txt')[1].text = text
         end,
+        left   = 5,
+        right  = 5,
+        top    = 5,
+        bottom = 5,
+        layout = wibox.container.margin,
     }
 
     -- Parse results and set temperature text
