@@ -29,7 +29,7 @@ local function worker()
                     {
                         id = 'txt',
                         widget = wibox.widget.textbox,
-                        font = beautiful.font .. " 11",
+                        font = "Montserrat Bold 10"
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
@@ -38,8 +38,8 @@ local function worker()
                 widget = wibox.container.margin
             },
             layout = wibox.container.background,
-            bg = colors.blue,
-            fg = colors.blue_dark,
+            bg = colors.blue_dark_transparent,
+            fg = colors.white,
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
             end,

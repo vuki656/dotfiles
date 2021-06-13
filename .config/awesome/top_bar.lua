@@ -55,13 +55,12 @@ awful.screen.connect_for_each_screen(function(screen)
             widget = wibox.container.background,
         },
         style = {
-            font = "11",
             bg_occupied = colors.transparent,
             bg_empty = colors.transparent,
-            bg_focus = colors.green,
+            bg_focus = colors.blue_dark_transparent,
             fg_empty = colors.white,
             fg_occupied = colors.white,
-            fg_focus = colors.blue_dark,
+            fg_focus = colors.white,
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
             end

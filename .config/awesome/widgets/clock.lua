@@ -10,7 +10,7 @@ local widget = {
             {
                 {
                     widget = wibox.widget.textclock(),
-                    font = beautiful.font .. " 11",
+                    font = "Montserrat Bold 10"
                 },
                 layout = wibox.layout.fixed.horizontal,
             },
@@ -19,8 +19,8 @@ local widget = {
             widget = wibox.container.margin
         },
         layout = wibox.container.background,
-        bg = colors.red,
-        fg = colors.blue_dark,
+        bg = colors.blue_dark_transparent,
+        fg = colors.white,
         shape = function(cairo, width, height)
             gears.shape.rounded_rect(cairo, width, height, 3)
         end,

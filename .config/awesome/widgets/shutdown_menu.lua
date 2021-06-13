@@ -27,7 +27,7 @@ local logout_menu_widget = wibox.widget {
         {
             {
                 {
-                    image = ICON_DIR .. 'shutdown.svg',
+                    image = ICON_DIR .. 'shutdown.png',
                     resize = true,
                     widget = wibox.widget.imagebox,
                     forced_height = 12,
@@ -40,7 +40,7 @@ local logout_menu_widget = wibox.widget {
             widget = wibox.container.margin
         },
         layout = wibox.container.background,
-        bg = colors.green,
+        bg = colors.blue_dark_transparent,
         fg = colors.blue_dark,
         shape = function(cairo, width, height)
             gears.shape.rounded_rect(cairo, width, height, 3)
