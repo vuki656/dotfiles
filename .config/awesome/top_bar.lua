@@ -94,26 +94,6 @@ awful.screen.connect_for_each_screen(function(screen)
         layout = wibox.container.margin,
     }
 
-    screen.layout_button = awful.widget.layoutbox(screen)
-    screen.layout_button:buttons(
-        gears.table.join(
-            awful.button(
-                {},
-                keys.mouse_buttons.left,
-                function () 
-                    awful.layout.inc(1)
-                end
-            ),
-            awful.button(
-                {},
-                keys.mouse_buttons.right,
-                function () 
-                    awful.layout.inc(-1) 
-                end
-            )
-        )
-    )
-
     -- Configure middle widgets
     local middle_widgets = gears.table.join(screen.mytasklist)
 
