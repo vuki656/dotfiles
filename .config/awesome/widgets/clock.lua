@@ -19,7 +19,7 @@ local widget = {
             widget = wibox.container.margin
         },
         layout = wibox.container.background,
-        bg = colors.purple,
+        bg = colors.red,
         fg = colors.blue_dark,
         shape = function(cairo, width, height)
             gears.shape.rounded_rect(cairo, width, height, 3)

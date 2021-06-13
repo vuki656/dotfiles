@@ -38,7 +38,7 @@ local function worker()
                 widget = wibox.container.margin
             },
             layout = wibox.container.background,
-            bg = colors.red,
+            bg = colors.blue,
             fg = colors.blue_dark,
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
@@ -70,7 +70,7 @@ local function worker()
     -- Reload API call and GUI display every 5 minutes
     watch(
         string.format([[bash -c "curl -s --show-error -X GET '%s'"]], api_call),
-        300,
+        900,
         update_widget, weather_widget
     )
 
