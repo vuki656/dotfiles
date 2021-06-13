@@ -20,7 +20,7 @@ client.connect_signal("manage", function (client)
 
     -- Round client corners
     client.shape = function(cairo, width, height)
-        gears.shape.rounded_rect(cairo, width, height, 10)
+        gears.shape.rounded_rect(cairo, width, height, 5)
     end
 
     --  Set client as slave if master exists, else make master

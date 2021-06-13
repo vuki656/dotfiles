@@ -12,6 +12,7 @@ local colors = require('utils.colors')
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local temperature_widget = require("widgets.temperature")
 local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
+local clock_widget       = require('widgets.clock')
 
 awful.screen.connect_for_each_screen(function(screen)
     awful.tag(
@@ -121,7 +122,7 @@ awful.screen.connect_for_each_screen(function(screen)
         layout = wibox.layout.fixed.horizontal,
         temperature_widget(),
         volume_widget({ widget_type = "arc" }),
-        wibox.widget.textclock(),
+        clock_widget,
         screen.layout_button,
         logout_menu_widget(),
     }
