@@ -6,12 +6,11 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 
-local vars   = require('env_vars')
 local keys   = require('keys')
 local colors = require('utils.colors')
 
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local weather_widget     = require("awesome-wm-widgets.weather-widget.weather")
+local temperature_widget = require("widgets.temperature")
 local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
 
 awful.screen.connect_for_each_screen(function(screen)
@@ -25,7 +24,7 @@ awful.screen.connect_for_each_screen(function(screen)
     screen.mywibox = awful.wibar({ 
         position = "top",
         screen   = screen,
-        bg       = colors.blue_dark_transparent,
+        bg       = colors.blue_light_transparet,
         height   = 30,
     })
 
@@ -121,13 +120,7 @@ awful.screen.connect_for_each_screen(function(screen)
     local right_widgets = { 
         layout = wibox.layout.fixed.horizontal,
         volume_widget({ widget_type = "arc" }),
-        weather_widget({
-            api_key = vars.weather_api_key,
-            coordinates = { vars.coords.x, vars.coords.y },
-            time_format_12h = true,
-            units = 'metric',
-            show_hourly_forecast = true,
-        }),
+        temperature_widget(),
         wibox.widget.textclock(),
         screen.layout_button,
         logout_menu_widget(),

@@ -27,8 +27,8 @@ client.connect_signal("request::titlebars", function(client)
     }
 
     local style = {
-        bg_focus   = colors.blue_light_transparet,
-        bg_normal  = colors.blue_dark_transparent,
+        bg_normal   = colors.blue_light_transparet,
+        bg_focus  = colors.blue_dark_transparent,
         size = 20,
     }
 
