@@ -1,13 +1,3 @@
-
--------------------------------------------------
--- Logout Menu Widget for Awesome Window Manager
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/logout-menu-widget
-
--- @author Pavel Makhov
--- @copyright 2020 Pavel Makhov
--------------------------------------------------
-
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
@@ -106,7 +96,7 @@ local function worker(user_args)
                 margins = 8,
                 layout = wibox.container.margin
             },
-            bg = beautiful.bg_normal,
+            bg = colors.blue_light,
             widget = wibox.container.background
         }
 

@@ -11,6 +11,7 @@ local colors = require('utils.colors')
 
 local logout_menu_widget = require("widgets.shutdown_menu")
 local temperature_widget = require("widgets.temperature")
+local layout_widget = require("widgets.layout")
 local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
 local clock_widget       = require('widgets.clock')
 
@@ -119,11 +120,11 @@ awful.screen.connect_for_each_screen(function(screen)
     -- Configure right side widgets
     local right_widgets = { 
         layout = wibox.layout.fixed.horizontal,
+        volume_widget({ widget_type = "horizontal_bar" }),
         logout_menu_widget(),
         temperature_widget(),
         clock_widget,
-        volume_widget({ widget_type = "arc" }),
-        screen.layout_button,
+        layout_widget(screen),
     }
 
     screen.mywibox:setup {
