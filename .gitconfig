@@ -1,0 +1,6 @@
+[user]
+	name = domagoj.vukovic
+	email = off.vukovic@gmail.com
+[core]
+	autocrlf = input
+	editor = nvim
