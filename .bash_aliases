@@ -16,7 +16,7 @@ alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
 
 # Git
-alias gs='git status -s'
+alias gs='git status'
 alias gpl='git pull'
 alias gp='git push'
 alias ga='git add'
