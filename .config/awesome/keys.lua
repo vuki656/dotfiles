@@ -761,11 +761,11 @@ for i = 1, 9 do
             { module.modkey },
             "#" .. i + 9,
             function ()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-
-                if tag then
-                    tag:view_only()
+                for screen = 1, screen.count() do
+                    local tag = awful.tag.gettags(screen)[i]
+                    if tag then
+                        awful.tag.viewonly(tag)
+                    end
                 end
             end,
             { 
