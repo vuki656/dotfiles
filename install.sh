@@ -56,10 +56,10 @@ install_dev_tools() {
 
     # Snaps
     sudo snap install postman
+        sudo snap install lazygit
 
     # APTs
     sudo apt install alacritty
-    sudo apt install lazygit
     sudo apt install code
 
     # Chrome
