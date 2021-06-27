@@ -72,15 +72,16 @@ install_dev_tools() {
 
     # Snaps
     sudo snap install postman
-        sudo snap install lazygit
+    sudo snap install code
 
     # APTs
     sudo apt install alacritty
-    sudo apt install code
 
     # Chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+    rm -rf ~/google-chrome-stable_current_amd64.deb
     
 }
 
