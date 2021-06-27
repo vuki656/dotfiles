@@ -49,16 +49,26 @@ install_npm_packages() {
 
 install_lua() {
     sudo apt install ninja-build
-    cd ~
 
+    # Clone lua
     git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
     git submodule update --init --recursive
 
+    # Install lua
     cd 3rd/luamake
     compile/install.sh
     cd ../..
     ./3rd/luamake/luamake rebuild
+
+    cd ~
+
+    # Install luarocks
+    wget https://luarocks.org/releases/luarocks-3.7.0.tar.gz
+    tar zxpf luarocks-3.7.0.tar.gz
+    cd luarocks-3.7.0
+    ./configure && make && sudo make install
+    sudo luarocks install luasocket
 
     cd ~
 }
