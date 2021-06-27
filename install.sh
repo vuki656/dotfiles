@@ -10,7 +10,13 @@ install_prerequisites() {
 
     sudo apt install curl
     sudo apt install wget
+}
+
+install_awesome() {
     sudo apt install awesome
+
+    git clone https://github.com/streetturtle/awesome-wm-widgets ~/.config/awesome
+    wget -P ~/.config/awesome/ https://raw.githubusercontent.com/rxi/json.lua/master/json.lua
 }
 
 install_golang() {
@@ -105,6 +111,7 @@ install_media_tools() {
 
 install_prerequisites
 
+install_awesome
 install_node
 install_npm_packages
 install_rust
