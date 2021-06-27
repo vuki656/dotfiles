@@ -45,9 +45,14 @@ install_rust() {
 
 install_npm_packages() {
     npm i -g yarn
+}  
+
+install_other() {
+    sudo apt install rofi            # App launcher
+    sudo apt install pavucontrol     # Audio controller
 }
 
-instasll_dev_tools() {
+install_dev_tools() {
 
     # Snaps
     sudo snap install postman
@@ -63,7 +68,7 @@ instasll_dev_tools() {
     
 }
 
-instasll_media_tools() {
+install_media_tools() {
     sudo apt install vlc
 }
 
@@ -78,6 +83,7 @@ install_npm_packages
 install_rust
 install_python
 install_golang
-instasll_dev_tools
-instasll_media_tools
+install_dev_tools
+install_media_tools
+install_other
 
