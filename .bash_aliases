@@ -21,3 +21,5 @@ alias gpl='git pull'
 alias gp='git push'
 alias ga='git add'
 alias gaa='git add .'
+alias lg='lazygit'
+
