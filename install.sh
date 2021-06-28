@@ -60,6 +60,7 @@ install_npm_packages() {
 install_brew_packages() {
     brew install jesseduffield/lazygit/lazygit
     brew install jesseduffield/lazydocker/lazydocker
+    brew install tmuxp
 }
 
 install_lua() {
@@ -75,7 +76,6 @@ install_lua() {
     compile/install.sh
     cd ../..
     ./3rd/luamake/luamake rebuild
-
     cd ~
 
     # Install luarocks
@@ -84,7 +84,6 @@ install_lua() {
     cd luarocks-3.7.0
     ./configure && make && sudo make install
     sudo luarocks install luasocket
-
     cd ~
 }
 

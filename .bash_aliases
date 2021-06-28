@@ -26,3 +26,6 @@ alias lg='lazygit'
 # Other
 alias ld='lazydocker'
 alias n='nvim'
+
+# Setups
+alias pq='tmuxp load ~/setups/qia.yaml -y'
