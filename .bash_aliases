@@ -23,3 +23,5 @@ alias ga='git add'
 alias gaa='git add .'
 alias lg='lazygit'
 
+# Other
+alias ld='lazydocker'
