@@ -1,16 +1,11 @@
-session_name: QIA
+session_name: QIA Dashboard
 windows:
-  - window_name: qia-dashboard
+  - window_name: NVIM
     start_directory: ~/IdeaProjects/qia-dashboard 
     panes:
       - shell_command:
         - nvim
-  - window_name: qia-graphql-api
-    start_directory: ~/IdeaProjects/qia-graphql-api
-    panes:
-      - shell_command:
-        - nvim
-  - window_name: term
+  - window_name: TERM
     layout: main-vertical
     panes:
       - shell_command:
@@ -23,10 +18,8 @@ windows:
         - yarn
         - kill -9 $(lsof -t -i tcp:3000)
         - yarn dev
+  - window_name: GIT
+    panes:
       - shell_command:
-        - cd ~/IdeaProjects/qia-graphql-api
-        - nvm use 12.16
-        - yarn
-        - kill -9 $(lsof -t -i tcp:8082)
-        - yarn setup
-        - yarn start
+        - cd ~/IdeaProjects/qia-dashboard
+        - lazygit

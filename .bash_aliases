@@ -28,4 +28,7 @@ alias ld='lazydocker'
 alias n='nvim'
 
 # Setups
-alias pq='tmuxp load ~/setups/qia.yaml -y'
+alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '
+
+# TMUX
+alias tk='tmux kill-session'

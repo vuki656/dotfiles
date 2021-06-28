@@ -1,0 +1,26 @@
+session_name: QIA API
+windows:
+  - window_name: NVIM
+    start_directory: ~/IdeaProjects/qia-graphql-api
+    panes:
+      - shell_command:
+        - nvim
+  - window_name: TERM
+    layout: main-vertical
+    panes:
+      - shell_command:
+        - cd ~/IdeaProjects/qia-graphql-api
+        - nvm use 12.16
+        - clear
+      - shell_command:
+        - cd ~/IdeaProjects/qia-graphql-api
+        - nvm use 12.16
+        - yarn
+        - kill -9 $(lsof -t -i tcp:8082)
+        - yarn setup
+        - yarn start
+  - window_name: GIT
+    panes:
+      - shell_command:
+        - cd ~/IdeaProjects/qia-graphql-api
+        - lazygit
