@@ -8,8 +8,12 @@ install_prerequisites() {
     # PPA Management
     sudo apt install software-properties-common
 
+    # Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
     sudo apt install curl
     sudo apt install wget
+    sudo apt install build-essential
 }
 
 install_awesome() {
@@ -52,6 +56,11 @@ install_rust() {
 install_npm_packages() {
     npm i -g yarn
 }  
+
+install_brew_packages() {
+    brew install jesseduffield/lazygit/lazygit
+    brew install jesseduffield/lazydocker/lazydocker
+}
 
 install_lua() {
     sudo apt install ninja-build
@@ -114,6 +123,7 @@ install_prerequisites
 install_awesome
 install_node
 install_npm_packages
+install_brew_packages
 install_rust
 install_python
 install_golang
