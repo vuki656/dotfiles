@@ -25,3 +25,4 @@ alias lg='lazygit'
 
 # Other
 alias ld='lazydocker'
+alias n='nvim'
