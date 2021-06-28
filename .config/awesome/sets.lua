@@ -27,7 +27,7 @@ os.execute("xset r rate 250 40") 		-- Set repeating keys speed (args => delay, t
 
 -- Set wallpaper
 local function set_wallpaper()
-    awful.spawn.with_shell('feh --bg-scale ~/wallpapers/cartoon-mountains-001.jpg') 
+    awful.spawn.with_shell('feh --bg-scale ~/wallpapers/sea-002.jpg') 
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
