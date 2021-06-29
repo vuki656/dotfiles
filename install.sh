@@ -91,6 +91,7 @@ install_lua() {
 install_other() {
     sudo apt install rofi            # App launcher
     sudo apt install pavucontrol     # Audio controller
+    sudo apt install playerctl       # CLI Audio controller
 
     sudo apt install ranger          # Terminal file manager
     pip install ueberzug             # Ranger image preview
