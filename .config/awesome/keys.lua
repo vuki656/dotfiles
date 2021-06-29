@@ -391,14 +391,24 @@ module.global_keys = gears.table.join(
         { module.modkey },
         "c",
         function () 
-            awful.util.spawn_with_shell("google-chrome --password-store=gnome")
+            awful.util.spawn_with_shell("google-chrome --profile-directory=Default --password-store=gnome")
         end,
         { 
-            description = "Start chrome",
+            description = "Start chrome - PERSONAL",
             group = module.key_groups.apps
         }
     ),
-
+    awful.key(
+        { module.modkey },
+        "v",
+        function () 
+            awful.util.spawn_with_shell("google-chrome --profile-directory='Profile 1' --password-store=gnome")
+        end,
+        { 
+            description = "Start chrome - WORK",
+            group = module.key_groups.apps
+        }
+    ),
     awful.key(
         { module.modkey },
         "s",
