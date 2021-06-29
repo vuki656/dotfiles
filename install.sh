@@ -55,6 +55,7 @@ install_rust() {
 
 install_npm_packages() {
     npm i -g yarn
+    npm i -g eslint_d
 }  
 
 install_brew_packages() {
@@ -90,6 +91,9 @@ install_lua() {
 install_other() {
     sudo apt install rofi            # App launcher
     sudo apt install pavucontrol     # Audio controller
+
+    sudo apt install ranger          # Terminal file manager
+    pip install ueberzug             # Ranger image preview
 }
 
 install_dev_tools() {
