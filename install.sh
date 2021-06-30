@@ -102,6 +102,7 @@ install_dev_tools() {
     # Snaps
     sudo snap install postman
     sudo snap install code
+    sudo snap install discord
 
     # APTs
     sudo apt install alacritty
