@@ -3,6 +3,10 @@
 source ~/.bash_functions
 source ~/.bash_aliases
 
+# Set preffered editor system wide
+export VISUAL=nvim;
+export EDITOR=nvim;
+
 # Init git keys
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
