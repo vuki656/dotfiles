@@ -112,6 +112,25 @@ install_media_tools() {
     sudo apt install vlc
 }
 
+install_lock() {
+    sudo apt install pkg-config
+    sudo apt install libxcb
+    sudo apt install libxcb-util
+    sudo apt install libpam-dev
+    sudo apt install libcairo-dev
+    sudo apt install libxcb-xinerama
+    sudo apt install libxcb-randr
+    sudo apt install libev
+    sudo apt install libx11-dev
+    sudo apt install libx11-xcb-dev
+    sudo apt install libxkbcommon 
+    sudo apt install libxkbcommon-x11 
+    sudo apt install libxcb-image
+    sudo apt install libxcb-xrm
+
+    sudo apt install i3lock
+}
+
 ##############################################################
 #------------------------ INSTALL ---------------------------#
 ##############################################################
@@ -119,6 +138,7 @@ install_media_tools() {
 install_prerequisites
 
 install_awesome
+install_lock
 install_node
 install_npm_packages
 install_brew_packages
