@@ -94,7 +94,10 @@ install_other() {
     sudo apt install playerctl       # CLI Audio controller
 
     sudo apt install ranger          # Terminal file manager
-    pip install ueberzug             # Ranger image preview
+
+    # Ranger image preview
+    sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
+    pip install ueberzug 
 }
 
 install_dev_tools() {
