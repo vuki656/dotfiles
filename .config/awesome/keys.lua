@@ -235,6 +235,18 @@ module.taglist_buttons = gears.table.join(
 module.client_keys = gears.table.join(
     awful.key(
         { module.modkey },
+        "g",
+        function ()
+            awful.spawn.with_shell('i3lock --c 000000')    	
+        end,
+        { 
+            description = "Lock screen",
+            group = module.key_groups.other
+        }
+    ),
+
+    awful.key(
+        { module.modkey },
         "f",
         function (client)
             client.fullscreen = not client.fullscreen
@@ -244,7 +256,7 @@ module.client_keys = gears.table.join(
             description = "Toggle currently selected window fullscreen",
             group = module.key_groups.current_window
         }
-     ),
+    ),
 
     awful.key(
         { 
