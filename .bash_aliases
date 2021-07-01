@@ -33,3 +33,9 @@ alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashb
 
 # TMUX
 alias tk='tmux kill-session'
+
+# Navigation
+alias ggt='nvim ~/.tmux.conf'
+alias gga='nvim ~/.config/awesome/rc.lua'
+alias ggn='nvim ~/.config/nvim/init.lua'
+alias gga='nvim ~/.bash_aliases'
