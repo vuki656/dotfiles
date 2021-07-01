@@ -133,7 +133,7 @@ module.client_buttons = gears.table.join(
 -------------------------------- CLIENT TOOLBAR BUTTONS --------------------------------------
 ----------------------------------------------------------------------------------------------
 
-module.client_toolbar_buttons = function (client) 
+module.client_toolbar_buttons = function (client)
     return gears.table.join(
         -- Move client on click & drag in toolbar
         awful.button(
