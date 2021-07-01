@@ -26,6 +26,7 @@ module.key_groups = {
     tag = "Tag",
     screen = "Screen",
     prompts = "Prompts",
+    audio = "Audio",
     other = "Other",
 }
 
@@ -757,19 +758,82 @@ module.global_keys = gears.table.join(
     ),
 
     awful.key(
-        { module.modkey },
-        "x",
+        { 
+            module.modkey,
+            "Control",
+            "Shift"
+        }, 
+        "y",
         function ()
-            awful.prompt.run {
-                prompt = "Run Lua Code: ",
-                textbox = awful.screen.focused().mypromptbox.widget,
-                exe_callback = awful.util.eval,
-                history_path = awful.util.get_cache_dir() .. "/history_eval"
-            }
+            awful.spawn.with_shell('playerctl previous')
         end,
         { 
-            description = "Open lua execute prompt",
-            group = module.key_groups.prompts
+            description = "Previous track",
+            group = module.key_groups.audio
+        }
+    ),
+
+    awful.key(
+        { 
+            module.modkey,
+            "Control",
+            "Shift"
+        }, 
+        "u",
+        function ()
+            awful.spawn.with_shell('playerctl next')
+        end,
+        { 
+            description = "Next track",
+            group = module.key_groups.audio
+        }
+    ),
+
+    awful.key(
+        { 
+            module.modkey,
+            "Control",
+            "Shift"
+        }, 
+        "i",
+        function ()
+            awful.spawn.with_shell('playerctl play-pause')
+        end,
+        { 
+            description = "Play/Pause",
+            group = module.key_groups.audio
+        }
+    ),
+
+    awful.key(
+        { 
+            module.modkey,
+            "Control",
+            "Shift"
+        }, 
+        "o",
+        function ()
+            awful.spawn.with_shell('amixer -D pulse sset Master 3%-')
+        end,
+        { 
+            description = "Volme Down",
+            group = module.key_groups.audio
+        }
+    ),
+
+    awful.key(
+        { 
+            module.modkey,
+            "Control",
+            "Shift"
+        }, 
+        "p",
+        function ()
+            awful.spawn.with_shell('amixer -D pulse sset Master 3%+')
+        end,
+        { 
+            description = "Volume Up",
+            group = module.key_groups.audio
         }
     )
 )
