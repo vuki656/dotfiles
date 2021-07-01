@@ -11,9 +11,11 @@ local colors = require('utils.colors')
 
 local logout_menu_widget = require("widgets.shutdown_menu")
 local temperature_widget = require("widgets.temperature")
-local layout_widget = require("widgets.layout")
-local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
+local layout_widget      = require("widgets.layout")
 local clock_widget       = require('widgets.clock')
+local battery_widget     = require('widgets.battery_indicator')
+
+local volume_widget      = require('awesome-wm-widgets.volume-widget.volume')
 
 awful.screen.connect_for_each_screen(function(screen)
     awful.tag(
@@ -105,6 +107,7 @@ awful.screen.connect_for_each_screen(function(screen)
         temperature_widget(),
         clock_widget,
         layout_widget(screen),
+        battery_widget({}),
     }
 
     screen.mywibox:setup {
