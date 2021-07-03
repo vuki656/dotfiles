@@ -26,7 +26,7 @@ function color_my_prompt {
     local __prompt_tail="\[\033[35m\]>|"
     local __last_color="\[\033[00m\]"
 
-    export PS1="$__time $__user $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color
+    export PS1="┌$__time $__user $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color
 └────>$ "
 }
 
