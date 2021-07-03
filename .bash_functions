@@ -35,8 +35,8 @@ cleana() {
 
 # Clean Brew
 cleanb() {
-    brew cleanup -y
-    brew doctor -y
+    brew cleanup
+    brew doctor
 
     clear
 }
@@ -73,11 +73,11 @@ upgradeb() {
 upgrades() {
     # APT
     cleana
-    updatea
+    upgradea
 
     # Brew
     cleanb
-    updateb
+    upgradeb
 
     # Snap
     sudo snap refresh 
