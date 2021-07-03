@@ -49,4 +49,5 @@ alias ggrn='nvim ~/.config/ranger/rc.conf'
 
 # Screen Layouts
 alias screenm='~/.screenlayout/default.sh'
-alias screens='~/.screenlayout/single.sh'
+alias screensp='~/.screenlayout/single-personal.sh'
+alias screensw='~/.screenlayout/single-work.sh'
