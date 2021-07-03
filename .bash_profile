@@ -1,6 +1,7 @@
 #!/bin/sh
 
-source "$HOME/.bashrc"              # Necesary for tmux to load correctly
+# Necesary for tmux to load correctly
+source "$HOME/.bashrc"              
 
 # Load cargo binaries
 export PATH=$PATH:~/.cargo/bin/     
