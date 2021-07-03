@@ -46,3 +46,7 @@ alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
 alias ggrn='nvim ~/.config/ranger/rc.conf'
+
+# Screen Layouts
+alias screenm='~/.screenlayout/default.sh'
+alias screens='~/.screenlayout/single.sh'
