@@ -34,6 +34,7 @@ install_apt_packages() {
     sudo apt install playerctl -y                          # CLI Audio controller
     sudo apt install vlc -y                                # Video player
     sudo apt install i3lock -y                             # Lock screen
+    sudo apt install vim                                   # Text editor
 }
 
 install_packages() {
