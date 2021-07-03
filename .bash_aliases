@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Install Script
+alias installa='bash ~/install.sh a'
+alias installp='bash ~/install.sh p'
+alias installl='bash ~/install.sh l'
+alias installt='bash ~/install.sh t'
+
 # Terminal
 alias c='clear'
 alias ..='cd ..'
@@ -38,4 +44,5 @@ alias ggnv='nvim ~/.config/nvim/init.lua'
 alias ggal='nvim ~/.config/alacritty/alacritty.yml'
 alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
+alias ggbf='nvim ~/.bash_functions'
 alias ggrn='nvim ~/.config/ranger/rc.conf'
