@@ -35,6 +35,7 @@ install_apt_packages() {
     sudo apt install vlc -y                                # Video player
     sudo apt install i3lock -y                             # Lock screen
     sudo apt install vim                                   # Text editor
+    sudo apt install arandr                                # XRandR GUI (Window Setup)
 }
 
 install_packages() {
