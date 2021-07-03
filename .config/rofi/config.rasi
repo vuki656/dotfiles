@@ -1,105 +1,105 @@
 configuration {
-	font:							"Noto Sans 10";
+    font:                           "Noto Sans 10";
     show-icons:                     true;
-    display-drun: 					"";
+    display-drun:                   "";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
-	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
+    hide-scrollbar:                 true;
+    sidebar-mode:                   false;
 }
 
 * {
-  black:      #000000;
-  red:        #eb6e67;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #6eaafb;
-  magenta:    #d886f3;
-  cyan:       #6cdcf7;
-  emphasis:   #50536b;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  fg:         #abb2bf;
-  bg:         #282c34;
+    black:      #000000;
+    red:        #eb6e67;
+    reen:      #95ee8f;
+    ellow:     #f8c456;
+    lue:       #6eaafb;
+    agenta:    #d886f3;
+    yan:       #6cdcf7;
+    mphasis:   #50536b;
+    ext:       #dfdfdf;
+    ext-alt:   #b2b2b2;
+    g:         #abb2bf;
+    g:         #282c34;
 
-  spacing: 0;
-  background-color: transparent;
+    pacing: 0;
+    ackground-color: transparent;
 
-  font: "SauceCodePro Nerd Font 14";
-  text-color: @text;
+    ont: "SauceCodePro Nerd Font 14";
+    ext-color: @text;
 }
 
 window {
-  transparency: "screenshot";
-	location: center;
-	background-color: #282c34dd;
-	width: 40%;
+    ransparency: "screenshot";
+    location: center;
+    background-color: #282c34dd;
+    width: 40%;
 }
 
 mainbox {
-  childern: [inputbar, message, listview];
+    hildern: [inputbar, message, listview];
 }
 
 inputbar {
-  padding: 10px 10px;
-  children: [entry, case-indicator];
+    adding: 10px 10px;
+    hildren: [entry, case-indicator];
 }
 
 prompt {
-  text-color: @blue;
+    ext-color: @blue;
 }
 
 textbox-prompt-colon {
-  expand: false;
-  str: ":";
-  text-color: @text-alt;
+    xpand: false;
+    tr: ":";
+    ext-color: @text-alt;
 }
 
 entry {
-  margin: 0px 0px;
+    argin: 0px 0px;
 }
 
 listview {
-	padding: 5px 5px;
-  spacing: 5px;
-	fixed-height: false;
-	scrollbar: false;
-	lines: 4;
+    padding: 5px 5px;
+    pacing: 5px;
+    fixed-height: false;
+    scrollbar: false;
+    lines: 4;
 }
 
 element {
-  padding: 5px;
-  text-color: @text-alt;
-  highlight: bold #95ee8f; /* green */
-  border-radius: 3px;
+    adding: 5px;
+    ext-color: @text-alt;
+    ighlight: bold #95ee8f;
+    order-radius: 3px;
 }
 
 element selected {
-  background-color: @emphasis;
-  text-color: @text;
+    ackground-color: @emphasis;
+    ext-color: @text;
 }
 
 element urgent, element selected urgent {
-  text-color: @red;
+    ext-color: @red;
 }
 
 element active, element selected active {
-  text-color: @purple;
+    ext-color: @purple;
 }
 
 message {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
-  border: 1px;
-  border-color: @cyan;
+    adding: 5px;
+    order-radius: 3px;
+    ackground-color: @emphasis;
+    order: 1px;
+    order-color: @cyan;
 }
 
 button selected {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
+    adding: 5px;
+    order-radius: 3px;
+    ackground-color: @emphasis;
 }
 
 /* vim:ft=css
