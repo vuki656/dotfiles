@@ -12,94 +12,94 @@ configuration {
 * {
     black:      #000000;
     red:        #eb6e67;
-    reen:      #95ee8f;
-    ellow:     #f8c456;
-    lue:       #6eaafb;
-    agenta:    #d886f3;
-    yan:       #6cdcf7;
-    mphasis:   #50536b;
-    ext:       #dfdfdf;
-    ext-alt:   #b2b2b2;
-    g:         #abb2bf;
-    g:         #282c34;
+    green:      #95ee8f;
+    yellow:     #f8c456;
+    blue:       #6eaafb;
+    magenta:    #d886f3;
+    cyan:       #6cdcf7;
+    emphasis:   #50536b;
+    text:       #dfdfdf;
+    text-alt:   #b2b2b2;
+    fg:         #abb2bf;
+    bg:         #282c34;
 
-    pacing: 0;
-    ackground-color: transparent;
+    spacing: 0;
+    background-color: transparent;
 
-    ont: "SauceCodePro Nerd Font 14";
-    ext-color: @text;
+    font: "SauceCodePro Nerd Font 14";
+    text-color: @text;
 }
 
 window {
-    ransparency: "screenshot";
+    transparency: "screenshot";
     location: center;
     background-color: #282c34dd;
     width: 40%;
 }
 
 mainbox {
-    hildern: [inputbar, message, listview];
+    childern: [inputbar, message, listview];
 }
 
 inputbar {
-    adding: 10px 10px;
-    hildren: [entry, case-indicator];
+    padding: 10px 10px;
+    children: [entry, case-indicator];
 }
 
 prompt {
-    ext-color: @blue;
+    text-color: @blue;
 }
 
 textbox-prompt-colon {
-    xpand: false;
-    tr: ":";
-    ext-color: @text-alt;
+    expand: false;
+    str: ":";
+    text-color: @text-alt;
 }
 
 entry {
-    argin: 0px 0px;
+    margin: 0px 0px;
 }
 
 listview {
     padding: 5px 5px;
-    pacing: 5px;
+    spacing: 5px;
     fixed-height: false;
     scrollbar: false;
     lines: 4;
 }
 
 element {
-    adding: 5px;
-    ext-color: @text-alt;
-    ighlight: bold #95ee8f;
-    order-radius: 3px;
+    padding: 5px;
+    text-color: @text-alt;
+    highlight: bold #95ee8f;
+    border-radius: 3px;
 }
 
 element selected {
-    ackground-color: @emphasis;
-    ext-color: @text;
+    background-color: @emphasis;
+    text-color: @text;
 }
 
 element urgent, element selected urgent {
-    ext-color: @red;
+    text-color: @red;
 }
 
 element active, element selected active {
-    ext-color: @purple;
+    text-color: @purple;
 }
 
 message {
-    adding: 5px;
-    order-radius: 3px;
-    ackground-color: @emphasis;
-    order: 1px;
-    order-color: @cyan;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: @emphasis;
+    border: 1px;
+    border-color: @cyan;
 }
 
 button selected {
-    adding: 5px;
-    order-radius: 3px;
-    ackground-color: @emphasis;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: @emphasis;
 }
 
 /* vim:ft=css
