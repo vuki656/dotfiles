@@ -4,16 +4,13 @@
 alias c='clear'
 alias ..='cd ..'
 alias e='exit'
+alias gh='cd ~/'
 
 # Apt
 alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
-alias padd='sudo apt install'
-alias premove='sudo apt remove'
-
-# System
-alias poweroff='systemctl poweroff'
-alias reboot='systemctl reboot'
+alias pad='sudo apt install'
+alias pre='sudo apt remove'
 
 # Git
 alias gs='git status'
@@ -23,13 +20,13 @@ alias ga='git add'
 alias gaa='git add .'
 alias lg='lazygit'
 
-# Other
+# Tools
 alias ld='lazydocker'
 alias n='nvim'
 alias r='ranger'
 
-# Setups
-alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '
+# Load Setups
+alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '           # QIA
 
 # TMUX
 alias tk='tmux kill-session'
@@ -40,4 +37,4 @@ alias ggaw='nvim ~/.config/awesome/rc.lua'
 alias ggnv='nvim ~/.config/nvim/init.lua'
 alias ggac='nvim ~/.config/alacritty/alacritty.yml'
 alias ggis='nvim ~/install.sh'
-alias ggal='nvim ~/.bash_aliases'
+alias ggba='nvim ~/.bash_aliases'
