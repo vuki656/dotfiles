@@ -2,7 +2,9 @@
 
 1. Add the following to the `.bashrc` `source ~/.bash_public.bash`
 2. Setup weather widget
-    - Put the following inside and grab a key [HERE](https://home.openweathermap.org/api_keys)
+    - Grab an API key [HERE](https://home.openweathermap.org/api_keys)
+    - Grab lat/long [HERE](https://www.maps.ie/coordinates.html)
+    - Put the following in '~/.config/awesome/env_vars.lua'
     ```lua
         local module = {}
 
