@@ -523,7 +523,7 @@ module.global_keys = gears.table.join(
         },
         "j",
         function () 
-            awful.screen.focus_relative(-1)
+            awful.screen.focus_relative(1)
         end,
         { 
             description = "Focus previous screen",
@@ -538,7 +538,7 @@ module.global_keys = gears.table.join(
         },
         "k",
         function () 
-            awful.screen.focus_relative(1)
+            awful.screen.focus_relative(-1)
         end,
         { 
             description = "Focus next screen",
