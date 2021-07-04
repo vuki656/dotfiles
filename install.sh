@@ -10,15 +10,15 @@ install_npm_packages() {
 }  
 
 install_brew_packages() {
-    brew install jesseduffield/lazygit/lazygit           # Git terminal UI
-    brew install jesseduffield/lazydocker/lazydocker     # Docker terminal UI
-    brew install tmuxp                                   # Tmux sesion manager
+    brew install jesseduffield/lazygit/lazygit             # Git terminal UI
+    brew install jesseduffield/lazydocker/lazydocker       # Docker terminal UI
+    brew install tmuxp                                     # Tmux sesion manager
 }
 
 install_snap_packages() {
-    sudo snap install postman                           # API Testing tool
-    sudo snap install code --classic                              # VS Code
-    sudo snap install discord                           # Discord
+    sudo snap install postman                              # API Testing tool
+    sudo snap install code --classic                       # VS Code
+    sudo snap install discord                              # Discord
 }
 
 install_apt_packages() {
@@ -44,6 +44,7 @@ install_packages() {
     install_snap_packages
     install_apt_packages
 
+    clear
     echo '================= PACKAGES INSTALLED ================='
 }
 
@@ -120,6 +121,7 @@ install_languages() {
     install_java
     install_lua
 
+    clear
     echo '================= LANGUAGES INSTALLED ================='
 }
 
@@ -171,6 +173,7 @@ install_tools() {
     install_homebrew
     install_ranger
 
+    clear
     echo '================= TOOLS INSTALLED ================='
 }
 
