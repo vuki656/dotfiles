@@ -2,7 +2,6 @@ local watch = require("awful.widget.watch")
 local json = require("json")
 local wibox = require("wibox")
 local gears = require("gears")
-local beautiful = require("beautiful")
 
 local colors = require('utils.colors')
 local env_vars = require('env_vars')
