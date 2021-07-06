@@ -47,6 +47,10 @@ alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
 alias ggrn='nvim ~/.config/ranger/rc.conf'
 
+# CD Navigation
+alias cdaw='cd ~/.config/awesome/'
+alias cdnv='cd ~/.config/nvim/'
+
 # Screen Layouts
 alias screenm='~/.screenlayout/default.sh'
 alias screensp='~/.screenlayout/single-personal.sh'
