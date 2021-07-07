@@ -16,7 +16,7 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
 }
 
-awful.spawn.with_shell('~/.screenlayout/default.sh')     							                -- Load screen layout config on boot
+awful.spawn.with_shell('~/.screenlayout/multiple-personal.sh')     							                -- Load screen layout config on boot
 awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
 
 os.execute("xset r rate 250 40") 		-- Set repeating keys speed (args => delay, times per second)
