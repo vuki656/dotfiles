@@ -60,10 +60,10 @@ awful.screen.connect_for_each_screen(function(screen)
         style = {
             bg_occupied = colors.transparent,
             bg_empty = colors.transparent,
-            bg_focus = colors.blue_dark_transparent,
+            bg_focus = colors.green,
             fg_empty = colors.white,
             fg_occupied = colors.white,
-            fg_focus = colors.white,
+            fg_focus = colors.blue_dark,
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
             end
