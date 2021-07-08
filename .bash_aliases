@@ -33,6 +33,7 @@ alias r='ranger'
 
 # Load Setups
 alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '           # QIA
+alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml'                                                # OEM
 alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml'                                         # UI Kit
 
 # TMUX
