@@ -6,7 +6,8 @@
 
 install_npm_packages() {
     npm i -g yarn -y                                       # Node package manager
-    npm i -g eslint_d -y                                   # Linter
+    npm i -g eslint_d -y                                   # Linter/Formatter
+    npm i -g prettier -y                                   # Linter/Formatter
 }  
 
 install_brew_packages() {
