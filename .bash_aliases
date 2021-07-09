@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Development
+alias ya='yarn'
+alias yd='yarn dev'
+
 # Install Script
 alias installa='bash ~/install.sh a'
 alias installp='bash ~/install.sh p'
@@ -37,7 +41,7 @@ alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml'                       
 alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml'                                         # UI Kit
 
 # TMUX
-alias tk='tmux kill-session'
+alias tk='tmux kill-server'
 
 # Navigation
 alias ggtm='nvim ~/.tmux.conf'
@@ -54,7 +58,7 @@ alias cdaw='cd ~/.config/awesome/'
 alias cdnv='cd ~/.config/nvim/'
 
 # Screen Layouts
-alias screenmp='~/.screenlayout/multiple-personal.sh'
-alias screenmw='~/.screenlayout/multiple-work.sh'
-alias screensp='~/.screenlayout/single-personal.sh'
-alias screensw='~/.screenlayout/single-work.sh'
+alias screenpm='~/.screenlayout/multiple-personal.sh'
+alias screenps='~/.screenlayout/single-personal.sh'
+alias screenwm='~/.screenlayout/multiple-work.sh'
+alias screenws='~/.screenlayout/single-work.sh'
