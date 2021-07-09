@@ -21,6 +21,10 @@ install_snap_packages() {
     sudo snap install discord                              # Discord
 }
 
+install_rust_packages() {
+    cargo install stylua                                   # Lua formatter/linter         
+}
+
 install_apt_packages() {
     # Random prereqs
     sudo apt install build-essential -y
