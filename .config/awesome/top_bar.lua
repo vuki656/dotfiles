@@ -81,7 +81,7 @@ awful.screen.connect_for_each_screen(function(screen)
             bg_focus              = colors.transparent,
             bg_minimize           = colors.transparent,
             fg_normal             = colors.white,
-            fg_forcus             = colors.white,
+            fg_focus              = colors.white,
             fg_minimize           = colors.white,
         },
     }

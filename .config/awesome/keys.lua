@@ -181,7 +181,7 @@ module.taglist_buttons = gears.table.join(
         end
     ),
     
-    -- Move focues window to clicked tag
+    -- Move focuses window to clicked tag
     awful.button(
         { module.modkey },
         module.mouse_buttons.left,
@@ -816,7 +816,7 @@ module.global_keys = gears.table.join(
             awful.spawn.with_shell('amixer -D pulse sset Master 3%-')
         end,
         { 
-            description = "Volme Down",
+            description = "Volume Down",
             group = module.key_groups.audio
         }
     ),

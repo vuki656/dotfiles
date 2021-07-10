@@ -14,7 +14,7 @@ client.connect_signal("request::titlebars", function(client)
         buttons = keys.client_toolbar_buttons(client)
     }
 
-    local midddle_section = { 
+    local middle_section = { 
         buttons = keys.client_toolbar_buttons(client),
         layout  = wibox.layout.flex.horizontal
     }
@@ -34,7 +34,7 @@ client.connect_signal("request::titlebars", function(client)
 
     awful.titlebar(client, style) : setup {
         left_section,
-        midddle_section,
+        middle_section,
         right_section,
         layout = wibox.layout.align.horizontal
     }
