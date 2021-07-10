@@ -7,7 +7,7 @@ source ~/.bash_aliases
 #-------------------------------------- CONFIG ------------------------------------------------#
 ################################################################################################
 
-# Set preffered editor system wide
+# Set preferred editor system wide
 export VISUAL=nvim;
 export EDITOR=nvim;
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Necesary for tmux to load correctly
+# Necessary for tmux to load correctly
 source "$HOME/.bashrc"
 
 # Load cargo binaries
