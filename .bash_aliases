@@ -28,14 +28,14 @@ alias gpl='git pull'
 alias gp='git push'
 alias ga='git add'
 alias gaa='git add .'
-alias lg='lazygit'
 
 # Tools
+alias lg='lazygit'
 alias ld='lazydocker'
 alias n='nvim'
 alias r='ranger'
 
-# Load Setups
+# Load TMUX Setups
 alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '           # QIA
 alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml'                                                # OEM
 alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml'                                         # UI Kit
@@ -43,7 +43,7 @@ alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml'                
 # TMUX
 alias tk='tmux kill-server'
 
-# Navigation
+# Config File Navigation
 alias ggtm='nvim ~/.tmux.conf'
 alias ggaw='nvim ~/.config/awesome/rc.lua'
 alias ggnv='nvim ~/.config/nvim/init.lua'
@@ -58,7 +58,7 @@ alias cdaw='cd ~/.config/awesome/'
 alias cdnv='cd ~/.config/nvim/'
 
 # Screen Layouts
-alias screenpm='~/.screenlayout/multiple-personal.sh'
-alias screenps='~/.screenlayout/single-personal.sh'
-alias screenwm='~/.screenlayout/multiple-work.sh'
-alias screenws='~/.screenlayout/single-work.sh'
+alias screenpm='~/.screenlayout/personal-multiple.sh'
+alias screenps='~/.screenlayout/personal-single.sh'
+alias screenwm='~/.screenlayout/work-multiple.sh'
+alias screenws='~/.screenlayout/work-single.sh'
