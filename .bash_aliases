@@ -15,6 +15,7 @@ alias c='clear'
 alias ..='cd ..'
 alias e='exit'
 alias gh='cd ~/'
+alias rmd='rm -rf'
 
 # Apt
 alias update='sudo apt update'
