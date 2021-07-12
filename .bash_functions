@@ -63,8 +63,8 @@ upgradea() {
 
 # Update Brew
 upgradeb() {
-    sudo apt update -y
-    sudo apt upgrade -y
+    brew update 
+    brew upgrade 
 
     clear
 }
