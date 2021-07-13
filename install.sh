@@ -51,6 +51,8 @@ install_packages() {
     install_npm_packages
     install_brew_packages
     install_snap_packages
+    install_rust_packages
+    install_python_packages
     install_apt_packages
 
     clear
