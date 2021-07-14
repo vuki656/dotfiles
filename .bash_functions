@@ -69,6 +69,16 @@ upgradeb() {
     clear
 }
 
+# Update Nvim
+upgraden() {
+    cd ~/neovim
+    git pull
+    sudo make
+    cd ~/
+
+    clear
+}
+
 # Update everything
 upgrades() {
     # APT
@@ -81,6 +91,9 @@ upgrades() {
 
     # Snap
     sudo snap refresh
+
+    # Neovim
+    upgraden
 
     # NPM
     # npm update -g
