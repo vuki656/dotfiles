@@ -3,6 +3,7 @@
 # Development
 alias ya='yarn'
 alias yd='yarn dev'
+alias yc='yarn codegen'
 
 # Install Script
 alias installa='bash ~/install.sh a'
