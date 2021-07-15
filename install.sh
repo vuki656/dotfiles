@@ -90,7 +90,7 @@ install_node() {
 }
 
 install_rust() {
-    curl https://sh.rustup.rs -sSf | sh -y
+    curl https://sh.rustup.rs -sSf | sh -s
 }
 
 install_lua() {
