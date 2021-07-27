@@ -45,6 +45,7 @@ install_apt_packages() {
     sudo apt install i3lock -y                             # Lock screen
     sudo apt install vim                                   # Text editor
     sudo apt install arandr                                # XRandR GUI (Window Setup)
+    sudo apt install taskwarrior                           # Terminal task manager
 }
 
 install_packages() {
