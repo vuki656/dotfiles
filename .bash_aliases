@@ -28,7 +28,7 @@ alias pre='sudo apt remove'
 alias gs='git status'
 alias gpl='git pull'
 alias gp='git push'
-alias ga='git add'
+alias ga='git add -f'
 alias gaa='git add .'
 
 # Tools
