@@ -77,8 +77,8 @@ upgradea() {
 
 # Update Brew
 upgradeb() {
-    brew update 
-    brew upgrade 
+    brew update
+    brew upgrade
 
     clear
 }
