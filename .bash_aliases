@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# Development
-alias ya='yarn'
-alias yd='yarn dev'
-alias yc='yarn codegen'
-
 # Install Script
 alias installa='bash ~/install.sh a'
 alias installp='bash ~/install.sh p'
@@ -17,6 +12,7 @@ alias ..='cd ..'
 alias e='exit'
 alias gh='cd ~/'
 alias rmd='rm -rf'
+alias nv='node -v'
 
 # Apt
 alias update='sudo apt update'
@@ -38,7 +34,7 @@ alias n='nvim'
 alias r='ranger'
 
 # Load TMUX Setups
-alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '           # QIA
+alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '              # QIA
 alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                                # OEM
 alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                                         # UI Kit
 
