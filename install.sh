@@ -6,24 +6,24 @@
 
 install_npm_packages() {
     npm i -g yarn -y                                       # Node package manager
-    npm i -g eslint_d -y                                   # Linter/Formatter
-    npm i -g prettier -y                                   # Linter/Formatter
+    npm i -g eslint_d -y                                   # JS Linter/Formatter
+    npm i -g prettier -y                                   # JS Linter/Formatter
+    npm i -g markdownlint                                  # Markdown linter
+    npm i -g markdownlint-cli                              # Markdown cli
 }
 
 install_brew_packages() {
     brew install jesseduffield/lazygit/lazygit             # Git terminal UI
     brew install jesseduffield/lazydocker/lazydocker       # Docker terminal UI
     brew install tmuxp                                     # Tmux sesion manager
+    brew install hadolint                                  # Dockerfile linter
 }
 
 install_snap_packages() {
     sudo snap install postman                              # API Testing tool
     sudo snap install code --classic                       # VS Code
     sudo snap install discord                              # Discord
-}
-
-install_python_packages() {
-    pip install beautysh                                   # Bash formatter
+    sudo snap install shfmt                                # Bash formatter
 }
 
 install_rust_packages() {
@@ -53,7 +53,6 @@ install_packages() {
     install_brew_packages
     install_snap_packages
     install_rust_packages
-    install_python_packages
     install_apt_packages
 
     clear
