@@ -55,6 +55,7 @@ alias ggrn='nvim ~/.config/ranger/rc.conf'
 alias cdaw='cd ~/.config/awesome/'
 alias cdnv='cd ~/.config/nvim/'
 alias cdpr='cd ~/Projects'
+alias cdcl='cd ~/Projects/clones'
 
 # Screen Layouts
 alias screenpm='~/.screenlayout/personal-multiple.sh'
