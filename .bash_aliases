@@ -33,6 +33,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias n='nvim'
 alias r='ranger'
+alias h='htop'
 
 # Load TMUX Setups
 alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA
