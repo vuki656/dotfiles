@@ -22,6 +22,7 @@ alias pre='sudo apt remove'
 
 # Git
 alias gs='git status'
+alias gcl='git clone'
 alias gpl='git pull'
 alias gp='git push'
 alias ga='git add -f'
