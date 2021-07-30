@@ -190,9 +190,10 @@ install_tools() {
 }
 
 ################################################################################################
-#----------------------------------------------------------------------------------------------#
+#-------------------------------------- INSTALL OPTIONS ---------------------------------------#
 ################################################################################################
 
+# Install everything
 if [ $1 == 'a' ]
 then
     install_tools
@@ -200,16 +201,19 @@ then
     install_languages
 fi
 
+# Install only tools
 if [ $1 == 't' ]
 then
     install_tools
 fi
 
+# Install only packages
 if [ $1 == 'p' ]
 then
     install_packages
 fi
 
+# Install only languages
 if [ $1 == 'l' ]
 then
     install_languages
