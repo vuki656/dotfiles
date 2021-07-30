@@ -47,6 +47,7 @@ install_apt_packages() {
     sudo apt install arandr         # XRandR GUI (Window Setup)
     sudo apt install taskwarrior    # Terminal task manager
     sudo apt install shellcheck     # Shell linter
+    sudo apt install htop           # Resource usage viewer
 }
 
 install_packages() {
