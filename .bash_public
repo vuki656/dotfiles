@@ -8,8 +8,8 @@ source ~/.bash_aliases
 ################################################################################################
 
 # Set preferred editor system wide
-export VISUAL=nvim;
-export EDITOR=nvim;
+export VISUAL=nvim
+export EDITOR=nvim
 
 # Init GIT keys
 eval $(gnome-keyring-daemon --start)

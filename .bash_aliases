@@ -34,9 +34,9 @@ alias n='nvim'
 alias r='ranger'
 
 # Load TMUX Setups
-alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y '              # QIA
-alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                                # OEM
-alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                                         # UI Kit
+alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA
+alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                   # OEM
+alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                            # UI Kit
 
 # TMUX
 alias tk='tmux kill-server'

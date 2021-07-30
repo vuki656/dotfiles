@@ -5,29 +5,29 @@
 ################################################################################################
 
 install_npm_packages() {
-    npm i -g yarn -y                                       # Node package manager
-    npm i -g eslint_d -y                                   # JS Linter/Formatter
-    npm i -g prettier -y                                   # JS Linter/Formatter
-    npm i -g markdownlint                                  # Markdown linter
-    npm i -g markdownlint-cli                              # Markdown cli
+    npm i -g yarn -y          # Node package manager
+    npm i -g eslint_d -y      # JS Linter/Formatter
+    npm i -g prettier -y      # JS Linter/Formatter
+    npm i -g markdownlint     # Markdown linter
+    npm i -g markdownlint-cli # Markdown cli
 }
 
 install_brew_packages() {
-    brew install jesseduffield/lazygit/lazygit             # Git terminal UI
-    brew install jesseduffield/lazydocker/lazydocker       # Docker terminal UI
-    brew install tmuxp                                     # Tmux sesion manager
-    brew install hadolint                                  # Dockerfile linter
+    brew install jesseduffield/lazygit/lazygit       # Git terminal UI
+    brew install jesseduffield/lazydocker/lazydocker # Docker terminal UI
+    brew install tmuxp                               # Tmux sesion manager
+    brew install hadolint                            # Dockerfile linter
 }
 
 install_snap_packages() {
-    sudo snap install postman                              # API Testing tool
-    sudo snap install code --classic                       # VS Code
-    sudo snap install discord                              # Discord
-    sudo snap install shfmt                                # Bash formatter
+    sudo snap install postman        # API Testing tool
+    sudo snap install code --classic # VS Code
+    sudo snap install discord        # Discord
+    sudo snap install shfmt          # Bash formatter
 }
 
 install_rust_packages() {
-    cargo install stylua                                   # Lua formatter/linter
+    cargo install stylua # Lua formatter/linter
 }
 
 install_apt_packages() {
@@ -35,18 +35,18 @@ install_apt_packages() {
     sudo apt install build-essential -y
     sudo apt install software-properties-common -y
 
-    sudo apt install curl -y                               # Fetcher
-    sudo apt install wget -y                               # Fetcher
-    sudo apt install alacritty -y                          # Terminal
-    sudo apt install rofi -y                               # App launcher
-    sudo apt install pavucontrol -y                        # Audio controller
-    sudo apt install playerctl -y                          # CLI Audio controller
-    sudo apt install vlc -y                                # Video player
-    sudo apt install i3lock -y                             # Lock screen
-    sudo apt install vim                                   # Text editor
-    sudo apt install arandr                                # XRandR GUI (Window Setup)
-    sudo apt install taskwarrior                           # Terminal task manager
-    sudo apt install shellcheck                            # Shell linter
+    sudo apt install curl -y        # Fetcher
+    sudo apt install wget -y        # Fetcher
+    sudo apt install alacritty -y   # Terminal
+    sudo apt install rofi -y        # App launcher
+    sudo apt install pavucontrol -y # Audio controller
+    sudo apt install playerctl -y   # CLI Audio controller
+    sudo apt install vlc -y         # Video player
+    sudo apt install i3lock -y      # Lock screen
+    sudo apt install vim            # Text editor
+    sudo apt install arandr         # XRandR GUI (Window Setup)
+    sudo apt install taskwarrior    # Terminal task manager
+    sudo apt install shellcheck     # Shell linter
 }
 
 install_packages() {
@@ -147,7 +147,7 @@ install_docker() {
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg -y
     echo \
         "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
     sudo apt-get update -y
     sudo apt-get install docker-ce docker-ce-cli containerd.io -y
@@ -194,27 +194,23 @@ install_tools() {
 ################################################################################################
 
 # Install everything
-if [ $1 == 'a' ]
-then
+if [ $1 == 'a' ]; then
     install_tools
     install_packages
     install_languages
 fi
 
 # Install only tools
-if [ $1 == 't' ]
-then
+if [ $1 == 't' ]; then
     install_tools
 fi
 
 # Install only packages
-if [ $1 == 'p' ]
-then
+if [ $1 == 'p' ]; then
     install_packages
 fi
 
 # Install only languages
-if [ $1 == 'l' ]
-then
+if [ $1 == 'l' ]; then
     install_languages
 fi
