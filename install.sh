@@ -46,6 +46,7 @@ install_apt_packages() {
     sudo apt install vim                                   # Text editor
     sudo apt install arandr                                # XRandR GUI (Window Setup)
     sudo apt install taskwarrior                           # Terminal task manager
+    sudo apt install shellcheck                            # Shell linter
 }
 
 install_packages() {
