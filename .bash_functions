@@ -109,14 +109,14 @@ upgrades() {
     # Neovim
     upgraden
 
+    # Cargo
+    cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
+
     # NPM
     # npm update -g
 
     # PIP
     # pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U --user
-
-    # Cargo
-    # cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 
     cleans
 }
