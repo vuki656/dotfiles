@@ -13,6 +13,7 @@ alias e='exit'
 alias gh='cd ~/'
 alias rmd='rm -rf'
 alias nv='node -v'
+alias l='ll'
 
 # Apt
 alias update='sudo apt update'
