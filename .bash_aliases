@@ -52,6 +52,7 @@ alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
 alias ggrn='nvim ~/.config/ranger/rc.conf'
+alias ggnt='nvim ~/notes/dashboard.norg'
 
 # CD Navigation
 alias cdaw='cd ~/.config/awesome/'
@@ -64,6 +65,3 @@ alias screenpm='~/.screenlayout/personal-multiple.sh'
 alias screenps='~/.screenlayout/personal-single.sh'
 alias screenwm='~/.screenlayout/work-multiple.sh'
 alias screenws='~/.screenlayout/work-single.sh'
-
-# Task Warrior
-alias tl='task list'
