@@ -28,12 +28,14 @@ install_snap_packages() {
 
 install_rust_packages() {
     cargo install stylua # Lua formatter/linter
+    cargo install selene # Lua linter
 }
 
 install_apt_packages() {
     # Random prereqs
     sudo apt install build-essential -y
     sudo apt install software-properties-common -y
+    sudo apt install libssl-dev -y
 
     sudo apt install curl -y        # Fetcher
     sudo apt install wget -y        # Fetcher
