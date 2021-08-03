@@ -87,7 +87,7 @@ install_python() {
 install_node() {
     # Install NVM
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
-    . ~/.nvm/nvm.sh -y
+    . ~/.nvm/nvm.sh
 
     nvm install 14.17 -y
     nvm use 14.17 -y
@@ -102,25 +102,25 @@ install_lua() {
 
     # Clone lua
     git clone https://github.com/sumneko/lua-language-server
-    cd lua-language-server
+    cd lua-language-server || return 
     git submodule update --init --recursive
 
     # Install lua
-    cd 3rd/luamake
+    cd 3rd/luamake || return 
     compile/install.sh
     cd ../..
     ./3rd/luamake/luamake rebuild
-    cd ~
+    cd ~ || return 
 
     # Install luarocks
     sudo apt install liblua5.3-dev
     sudo apt install lua5.3
     wget https://luarocks.org/releases/luarocks-3.7.0.tar.gz
     tar zxpf luarocks-3.7.0.tar.gz
-    cd luarocks-3.7.0
+    cd luarocks-3.7.0 || return 
     ./configure && make && sudo make install
     sudo luarocks install luasocket
-    cd ~
+    cd ~ || return 
     rm ~/luarocks-3.7.0.tar.gz
 }
 
@@ -197,23 +197,23 @@ install_tools() {
 ################################################################################################
 
 # Install everything
-if [ $1 == 'a' ]; then
+if [ "$1" = 'a' ]; then
     install_tools
     install_packages
     install_languages
 fi
 
 # Install only tools
-if [ $1 == 't' ]; then
+if [ "$1" = 't' ]; then
     install_tools
 fi
 
 # Install only packages
-if [ $1 == 'p' ]; then
+if [ "$1" = 'p' ]; then
     install_packages
 fi
 
 # Install only languages
-if [ $1 == 'l' ]; then
+if [ "$1" = 'l' ]; then
     install_languages
 fi
