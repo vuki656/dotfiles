@@ -5,11 +5,11 @@
 ################################################################################################
 
 install_npm_packages() {
-    npm i -g yarn -y          # Node package manager
-    npm i -g eslint_d -y      # JS Linter/Formatter
-    npm i -g prettier -y      # JS Linter/Formatter
-    npm i -g markdownlint     # Markdown linter
-    npm i -g markdownlint-cli # Markdown cli
+    npm i -g yarn -y && yarn --emoji true # Node package manager
+    npm i -g eslint_d -y                  # JS Linter/Formatter
+    npm i -g prettier -y                  # JS Linter/Formatter
+    npm i -g markdownlint                 # Markdown linter
+    npm i -g markdownlint-cli             # Markdown cli
 }
 
 install_brew_packages() {
