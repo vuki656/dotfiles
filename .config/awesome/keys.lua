@@ -262,9 +262,8 @@ module.client_keys = gears.table.join(
     awful.key(
         { 
             module.modkey,
-            "Shift"   
         },
-        "c",
+        "x",
         function (client) 
             client:kill()                         
         end,
