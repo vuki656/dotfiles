@@ -102,25 +102,25 @@ install_lua() {
 
     # Clone lua
     git clone https://github.com/sumneko/lua-language-server
-    cd lua-language-server || return 
+    cd lua-language-server || return
     git submodule update --init --recursive
 
     # Install lua
-    cd 3rd/luamake || return 
+    cd 3rd/luamake || return
     compile/install.sh
     cd ../..
     ./3rd/luamake/luamake rebuild
-    cd ~ || return 
+    cd ~ || return
 
     # Install luarocks
     sudo apt install liblua5.3-dev
     sudo apt install lua5.3
     wget https://luarocks.org/releases/luarocks-3.7.0.tar.gz
     tar zxpf luarocks-3.7.0.tar.gz
-    cd luarocks-3.7.0 || return 
+    cd luarocks-3.7.0 || return
     ./configure && make && sudo make install
     sudo luarocks install luasocket
-    cd ~ || return 
+    cd ~ || return
     rm ~/luarocks-3.7.0.tar.gz
 }
 
