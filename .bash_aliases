@@ -19,7 +19,7 @@ alias l='ll'
 alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
 alias pad='sudo apt install'
-alias pre='sudo apt remove'
+alias par='sudo apt remove'
 
 # Git
 alias gs='git status'
