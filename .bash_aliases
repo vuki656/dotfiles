@@ -53,7 +53,7 @@ alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
 alias ggrn='nvim ~/.config/ranger/rc.conf'
-alias ggnt='nvim ~/notes/dashboard.norg'
+alias ggnt='nvim ~/personal/README.md'
 
 # CD Navigation
 alias cdaw='cd ~/.config/awesome/'
