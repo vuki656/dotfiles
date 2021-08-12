@@ -52,7 +52,6 @@ alias ggal='nvim ~/.config/alacritty/alacritty.yml'
 alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
-alias ggrn='nvim ~/.config/ranger/rc.conf'
 alias ggnt='nvim ~/personal/README.md'
 
 # CD Navigation
