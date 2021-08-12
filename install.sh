@@ -8,8 +8,9 @@ install_npm_packages() {
     npm i -g yarn -y && yarn --emoji true # Node package manager
     npm i -g eslint_d -y                  # JS Linter/Formatter
     npm i -g prettier -y                  # JS Linter/Formatter
-    npm i -g markdownlint                 # Markdown linter
-    npm i -g markdownlint-cli             # Markdown cli
+    npm i -g markdownlint -y              # Markdown linter
+    npm i -g markdownlint-cli -y          # Markdown cli
+    npm i -g write-good -y                # Sentence structure checker
 }
 
 install_brew_packages() {
@@ -45,11 +46,11 @@ install_apt_packages() {
     sudo apt install playerctl -y   # CLI Audio controller
     sudo apt install vlc -y         # Video player
     sudo apt install i3lock -y      # Lock screen
-    sudo apt install vim            # Text editor
-    sudo apt install arandr         # XRandR GUI (Window Setup)
-    sudo apt install taskwarrior    # Terminal task manager
-    sudo apt install shellcheck     # Shell linter
-    sudo apt install htop           # Resource usage viewer
+    sudo apt install vim -y         # Text editor
+    sudo apt install arandr -y      # XRandR GUI (Window Setup)
+    sudo apt install taskwarrior -y # Terminal task manager
+    sudo apt install shellcheck -y  # Shell linter
+    sudo apt install htop -y        # Resource usage viewer
 }
 
 install_packages() {
