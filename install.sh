@@ -33,24 +33,29 @@ install_rust_packages() {
 }
 
 install_apt_packages() {
+    # Required PPAs
+    sudo add-apt-repository ppa:apandada1/brightness-controller
+    sudo apt update
+
     # Random prereqs
     sudo apt install build-essential -y
     sudo apt install software-properties-common -y
     sudo apt install libssl-dev -y
 
-    sudo apt install curl -y        # Fetcher
-    sudo apt install wget -y        # Fetcher
-    sudo apt install alacritty -y   # Terminal
-    sudo apt install rofi -y        # App launcher
-    sudo apt install pavucontrol -y # Audio controller
-    sudo apt install playerctl -y   # CLI Audio controller
-    sudo apt install vlc -y         # Video player
-    sudo apt install i3lock -y      # Lock screen
-    sudo apt install vim -y         # Text editor
-    sudo apt install arandr -y      # XRandR GUI (Window Setup)
-    sudo apt install taskwarrior -y # Terminal task manager
-    sudo apt install shellcheck -y  # Shell linter
-    sudo apt install htop -y        # Resource usage viewer
+    sudo apt install curl -y               # Fetcher
+    sudo apt install wget -y               # Fetcher
+    sudo apt install alacritty -y          # Terminal
+    sudo apt install rofi -y               # App launcher
+    sudo apt install pavucontrol -y        # Audio controller
+    sudo apt install playerctl -y          # CLI audio controller
+    sudo apt install vlc -y                # Video player
+    sudo apt install i3lock -y             # Lock screen
+    sudo apt install vim -y                # Text editor
+    sudo apt install arandr -y             # XRandR GUI (Window Setup)
+    sudo apt install taskwarrior -y        # Terminal task manager
+    sudo apt install shellcheck -y         # Shell linter
+    sudo apt install htop -y               # Resource usage viewer
+    sudo apt install brightness-controller # Brightness controller
 }
 
 install_packages() {
