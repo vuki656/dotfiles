@@ -43,24 +43,18 @@ cleana() {
     sudo apt clean -y
     sudo apt autoclean -y
     sudo apt autoremove -y
-
-    clear
 }
 
 # Clean Brew
 cleanb() {
     brew cleanup
     brew doctor
-
-    clear
 }
 
 # Clean System
 cleans() {
     cleana
     cleanb
-
-    clear
 }
 
 ################################################################################################
@@ -71,16 +65,12 @@ cleans() {
 upgradea() {
     sudo apt update -y
     sudo apt upgrade -y
-
-    clear
 }
 
 # Update Brew
 upgradeb() {
     brew update
     brew upgrade
-
-    clear
 }
 
 # Update Nvim
@@ -89,18 +79,14 @@ upgraden() {
     git pull
     sudo make
     cd ~/
-
-    clear
 }
 
 # Update everything
 upgrades() {
     # APT
-    cleana
     upgradea
 
     # Brew
-    cleanb
     upgradeb
 
     # Snap
