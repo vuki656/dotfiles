@@ -65,3 +65,6 @@ alias screenpm='~/.screenlayout/personal-multiple.sh'
 alias screenps='~/.screenlayout/personal-single.sh'
 alias screenwm='~/.screenlayout/work-multiple.sh'
 alias screenws='~/.screenlayout/work-single.sh'
+
+# Task Warrior
+alias tls='task list'
