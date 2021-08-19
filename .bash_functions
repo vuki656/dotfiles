@@ -24,6 +24,7 @@ nodev() {
     node -v
 }
 
+# Pull dots and neovim config
 pulla() {
     cd ~/
     git pull
@@ -32,6 +33,15 @@ pulla() {
     git pull
 
     cd ~/
+}
+
+# Search for files in terminal
+f() {
+    local result
+
+    result=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}') || return
+
+    nvim "$result"
 }
 
 ################################################################################################
