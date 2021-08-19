@@ -18,6 +18,8 @@ install_brew_packages() {
     brew install jesseduffield/lazydocker/lazydocker # Docker terminal UI
     brew install tmuxp                               # Tmux sesion manager
     brew install hadolint                            # Dockerfile linter
+    brew install fzf                                 # Terminal finder
+    brew install bat                                 # Terminal preview
 }
 
 install_snap_packages() {
