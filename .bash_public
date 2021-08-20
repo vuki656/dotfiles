@@ -17,6 +17,13 @@ export SSH_AUTH_SOCK
 export GNOME_KEYRING_PID
 export GNOME_KEYRING_CONTROL
 
+# Mobile Dev
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 ################################################################################################
 #------------------------------- Create PS1 (Terminal prefix) ---------------------------------#
 ################################################################################################
