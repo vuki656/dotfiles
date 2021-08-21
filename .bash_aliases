@@ -40,6 +40,7 @@ alias h='htop'
 alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA
 alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                   # OEM
 alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                            # UI Kit
+alias pr='tmuxp load ~/.config/.tmuxp/ride-a-short-app.yaml -y'                                # Ride A Short
 
 # TMUX
 alias tk='tmux kill-server'
