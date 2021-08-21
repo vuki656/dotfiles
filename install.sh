@@ -20,6 +20,7 @@ install_brew_packages() {
     brew install hadolint                            # Dockerfile linter
     brew install fzf                                 # Terminal finder
     brew install bat                                 # Terminal preview
+    brew install cocoapods                           # iOS Package manager
 }
 
 install_snap_packages() {
