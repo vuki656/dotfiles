@@ -34,4 +34,4 @@ windows:
         - kill -9 $(lsof -t -i tcp:8080)
         - yarn dev
       - shell_command:
-        - cd ~/Projects/ride-a-short-app
+        - cd ~/Projects/ride-a-short-api
