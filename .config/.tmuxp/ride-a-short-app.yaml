@@ -1,0 +1,37 @@
+session_name: Ride A Short
+windows:
+  - window_name: DOC
+    panes:
+      - shell_command:
+        - nvim ~/personal/projects/ride-a-short.md
+  - window_name: APP
+    start_directory: ~/Projects/ride-a-short-app
+    panes:
+      - shell_command:
+        - nvim
+  - window_name: APP TERM
+    layout: main-vertical
+    panes:
+      - shell_command:
+        - cd ~/Projects/ride-a-short-app
+        - yarn start
+      - shell_command:
+        - cd ~/Projects/ride-a-short-app
+        - yarn android
+  - window_name: API
+    start_directory: ~/Projects/ride-a-short-api
+    panes:
+      - shell_command:
+        - nvim
+  - window_name: API TERM
+    layout: main-vertical
+    panes:
+      - shell_command:
+        - cd ~/Projects/ride-a-short-api
+        - yarn setup
+        - yarn migrate
+        - yarn sync
+        - kill -9 $(lsof -t -i tcp:8080)
+        - yarn dev
+      - shell_command:
+        - cd ~/Projects/ride-a-short-api
