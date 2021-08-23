@@ -19,8 +19,3 @@ windows:
         - kill -9 $(lsof -t -i tcp:8082)
         - yarn setup
         - yarn start
-  - window_name: GIT
-    panes:
-      - shell_command:
-        - cd ~/IdeaProjects/qia-graphql-api
-        - lazygit

@@ -18,8 +18,3 @@ windows:
         - yarn
         - kill -9 $(lsof -t -i tcp:3000)
         - yarn dev
-  - window_name: GIT
-    panes:
-      - shell_command:
-        - cd ~/IdeaProjects/qia-dashboard
-        - lazygit
