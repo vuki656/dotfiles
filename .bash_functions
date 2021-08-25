@@ -17,7 +17,9 @@ gc() {
 nodev() {
     nvm install "$*"
     nvm nvm use "$*"
-    npm i -g yarn
+    npm i -g yarn -y
+    npm i -g typescript-language-server -y
+    npm i -g eslint_d
 
     clear
 
