@@ -32,7 +32,6 @@ install_snap_packages() {
 
 install_rust_packages() {
     cargo install stylua # Lua formatter/linter
-    cargo install selene # Lua linter
 }
 
 install_apt_packages() {
