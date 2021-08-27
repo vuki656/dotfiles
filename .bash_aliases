@@ -47,13 +47,13 @@ alias tk='tmux kill-server'
 
 # Config File Navigation
 alias ggtm='nvim ~/.tmux.conf'
-alias ggaw='nvim ~/.config/awesome/rc.lua'
-alias ggnv='nvim ~/.config/nvim/init.lua'
-alias ggal='nvim ~/.config/alacritty/alacritty.yml'
+alias ggaw='cd ~/.config/awesome/ && nvim rc.lua'
+alias ggnv='cd ~/.config/nvim/ && nvim init.lua'
+alias ggal='cd ~/.config/alacritty/ && nvim alacritty.yml'
 alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
-alias ggnt='nvim ~/personal/README.md'
+alias ggnt='cd ~/personal/ && nvim README.md'
 
 # CD Navigation
 alias cdaw='cd ~/.config/awesome/'
