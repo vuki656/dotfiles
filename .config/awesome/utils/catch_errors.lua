@@ -2,17 +2,17 @@
 do
     local in_error = false
 
-    awesome.connect_signal("debug::error", function (error)
-        if in_error then 
+    awesome.connect_signal("debug::error", function(error)
+        if in_error then
             return
         end
 
         in_error = true
 
-        naughty.notify({ 
+        naughty.notify({
             preset = naughty.config.presets.critical,
             title = "Error",
-            text = tostring(error)
+            text = tostring(error),
         })
 
         in_error = false

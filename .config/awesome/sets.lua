@@ -16,10 +16,10 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
 }
 
-awful.spawn.with_shell('~/.screenlayout/personal-multiple.sh')     							                -- Load screen layout config on boot
-awful.spawn.with_shell('/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh')    	-- Unlock keyring
+awful.spawn.with_shell("~/.screenlayout/personal-multiple.sh") -- Load screen layout config on boot
+awful.spawn.with_shell("/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh") -- Unlock keyring
 
-os.execute("xset r rate 250 40") 		-- Set repeating keys speed (args => delay, times per second)
+os.execute("xset r rate 250 40") -- Set repeating keys speed (args => delay, times per second)
 
 ----------------------------------------------------------------------------------------------
 --------------------------------------- WALLPAPER --------------------------------------------
@@ -27,14 +27,14 @@ os.execute("xset r rate 250 40") 		-- Set repeating keys speed (args => delay, t
 
 -- Set wallpaper
 local function set_wallpaper()
-    awful.spawn.with_shell('feh --bg-scale ~/wallpapers/cartoon-forest-001.jpg')
+    awful.spawn.with_shell("feh --bg-scale ~/wallpapers/cartoon-forest-001.jpg")
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Set wallpaper for each screen
-awful.screen.connect_for_each_screen(function() 
+awful.screen.connect_for_each_screen(function()
     set_wallpaper()
 end)
 
@@ -43,5 +43,5 @@ end)
 ----------------------------------------------------------------------------------------------
 
 beautiful.init(gears.filesystem.get_configuration_dir() .. "./theme.lua")
-beautiful.useless_gap = 10                                                   -- Set window gap
-beautiful.gap_single_client = true                                           -- Enable gaps for single window
+beautiful.useless_gap = 10 -- Set window gap
+beautiful.gap_single_client = true -- Enable gaps for single window

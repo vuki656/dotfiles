@@ -6,41 +6,34 @@ pcall(require, "luarocks.loader")
 
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 local awful = require("awful")
-local keys = require('keys')
+local keys = require("keys")
 
 -- Build custom menu buttons
 local main_menu = freedesktop.menu.build({
-    before = { 
-        { 
+    before = {
+        {
             "System",
             {
-                { 
+                {
                     "Restart",
-                    awesome.restart 
+                    awesome.restart,
                 },
-                { 
+                {
                     "Quit",
-                    function() 
+                    function()
                         awesome.quit()
-                    end
+                    end,
                 },
                 {
                     "Edit Config",
-                    'gedit' .. " " .. awesome.conffile
-                }
-            }
+                    "gedit" .. " " .. awesome.conffile,
+                },
+            },
         },
     },
 })
 
 -- Register menu
-root.buttons(
-    awful.button(
-        {},
-        keys.mouse_buttons.right,
-        function () 
-            main_menu:toggle()
-        end
-    )
-)
-
+root.buttons(awful.button({}, keys.mouse_buttons.right, function()
+    main_menu:toggle()
+end))
