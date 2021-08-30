@@ -99,8 +99,9 @@ install_node() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
     . ~/.nvm/nvm.sh
 
-    nvm install 14.17 -y
-    nvm use 14.17 -y
+    nvm install 14.16 -y
+    nvm use 14.16 -y
+    nvm alias default 14.16
 }
 
 install_rust() {
