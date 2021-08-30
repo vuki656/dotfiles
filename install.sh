@@ -69,7 +69,6 @@ install_packages() {
     install_rust_packages
     install_apt_packages
 
-    clear
     echo '================= PACKAGES INSTALLED ================='
 }
 
@@ -147,7 +146,6 @@ install_languages() {
     install_java
     install_lua
 
-    clear
     echo '================= LANGUAGES INSTALLED ================='
 }
 
@@ -199,7 +197,6 @@ install_tools() {
     install_homebrew
     install_ranger
 
-    clear
     echo '================= TOOLS INSTALLED ================='
 }
 
