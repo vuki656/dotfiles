@@ -85,10 +85,13 @@ upgradeb() {
 
 # Update Nvim
 upgraden() {
-    cd ~/neovim
+    cd ~/neovim || return
+
     git pull
+
     sudo make
-    cd ~/
+
+    cd ~/ || return
 }
 
 # Update everything
@@ -106,7 +109,7 @@ upgrades() {
     upgraden
 
     # Cargo
-    cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
+    cargo install "$(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')"
 
     # NPM
     # npm update -g
