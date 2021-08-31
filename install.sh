@@ -11,6 +11,7 @@ install_npm_packages() {
     npm i -g markdownlint -y              # Markdown linter
     npm i -g markdownlint-cli -y          # Markdown cli
     npm i -g write-good -y                # Sentence structure checker
+    npm i -g fixjson -y                   # JSON Formatter
 }
 
 install_brew_packages() {
@@ -62,12 +63,17 @@ install_apt_packages() {
     sudo apt install ripgrep -y            # Fuzzy Finder
 }
 
+install_python_packages() {
+    pip install codespell                  # Spellchecker
+}
+
 install_packages() {
     install_npm_packages
     install_brew_packages
     install_snap_packages
     install_rust_packages
     install_apt_packages
+    install_python_packages
 
     echo '================= PACKAGES INSTALLED ================='
 }
