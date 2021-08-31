@@ -14,6 +14,7 @@ alias gh='cd ~/'
 alias rmd='rm -rf'
 alias nv='node -v'
 alias l='ll'
+alias t='touch'
 
 # Apt
 alias update='sudo apt update'
