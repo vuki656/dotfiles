@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# Check if given command can be executed
+no_cmd() {
+    if ! [ -x "$(command -v "$1")" ]; then
+        return 0
+    fi
+
+    return 1
+}
+
 ################################################################################################
 #-------------------------------------- PACKAGES ----------------------------------------------#
 ################################################################################################
@@ -91,69 +100,83 @@ install_packages() {
 ################################################################################################
 
 install_golang() {
-    sudo add-apt-repository ppa:longsleep/golang-backports -y
+    if no_cmd 'go'; then
+        sudo add-apt-repository ppa:longsleep/golang-backports -y
 
-    sudo apt update -y
+        sudo apt update -y
 
-    sudo apt install golang-go -y
+        sudo apt install golang-go -y
+    fi
 }
 
 install_python() {
-    sudo add-apt-repository ppa:deadsnakes/ppa -y
+    if no_cmd 'python3'; then
+        sudo add-apt-repository ppa:deadsnakes/ppa -y
 
-    sudo apt update -y
+        sudo apt update -y
 
-    sudo apt install python3 -y
-    sudo apt install python3-pip -y
+        sudo apt install python3 -y
+        sudo apt install python3-pip -y
+    fi
 }
 
 install_node() {
-    # Install NVM
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
-    . ~/.nvm/nvm.sh
+    if no_cmd 'node'; then
+        # Install NVM
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
+        . ~/.nvm/nvm.sh
 
-    nvm install 14.17 -y
-    nvm use 14.17 -y
-    nvm alias default 14.17
+        nvm install 14.17 -y
+        nvm use 14.17 -y
+        nvm alias default 14.17
+    fi
 }
 
 install_rust() {
-    curl https://sh.rustup.rs -sSf | sh -s
+    if no_cmd 'rustup'; then
+        curl https://sh.rustup.rs -sSf | sh -s
+    fi
 }
 
 install_lua() {
-    sudo apt install ninja-build -y
+    if no_cmd 'lua'; then
+        sudo apt install ninja-build -y
 
-    # Clone lua
-    git clone https://github.com/sumneko/lua-language-server
-    cd lua-language-server || return
-    git submodule update --init --recursive
+        # Clone lua
+        git clone https://github.com/sumneko/lua-language-server
+        cd lua-language-server || return
+        git submodule update --init --recursive
 
-    # Install lua
-    cd 3rd/luamake || return
-    compile/install.sh
-    cd ../..
-    ./3rd/luamake/luamake rebuild
-    cd ~ || return
+        # Install lua
+        cd 3rd/luamake || return
+        compile/install.sh
+        cd ../..
+        ./3rd/luamake/luamake rebuild
+        cd ~ || return
 
-    # Install luarocks
-    sudo apt install liblua5.3-dev
-    sudo apt install lua5.3
-    wget https://luarocks.org/releases/luarocks-3.7.0.tar.gz
-    tar zxpf luarocks-3.7.0.tar.gz
-    cd luarocks-3.7.0 || return
-    ./configure && make && sudo make install
-    sudo luarocks install luasocket
-    cd ~ || return
-    rm ~/luarocks-3.7.0.tar.gz
+        # Install luarocks
+        sudo apt install liblua5.3-dev
+        sudo apt install lua5.3
+        wget https://luarocks.org/releases/luarocks-3.7.0.tar.gz
+        tar zxpf luarocks-3.7.0.tar.gz
+        cd luarocks-3.7.0 || return
+        ./configure && make && sudo make install
+        sudo luarocks install luasocket
+        cd ~ || return
+        rm ~/luarocks-3.7.0.tar.gz
+    fi
 }
 
 install_teal() {
-    luarocks install --dev teal-language-server
+    if no_cmd 'tl'; then
+        luarocks install --dev teal-language-server
+    fi
 }
 
 install_java() {
-    sudo apt install default-jre
+    if no_cmd 'java'; then
+        sudo apt install default-jre
+    fi
 }
 
 install_languages() {
@@ -173,50 +196,60 @@ install_languages() {
 ################################################################################################
 
 install_docker() {
-    sudo apt-get update -y
-    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg -y
-    echo \
-        "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    if no_cmd 'docker'; then
+        sudo apt-get update -y
+        sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg -y
+        echo \
+            "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
-    sudo apt-get update -y
-    sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+        sudo apt-get update -y
+        sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+    fi
 }
 
 install_nvim() {
-    sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip -y
+    if no_cmd 'nvim'; then
+        sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip -y
 
-    cd ~/ || return
-    git clone https://github.com/neovim/neovim
-    cd neovim && make -j4
-    sudo make install
+        cd ~/ || return
+        git clone https://github.com/neovim/neovim
+        cd neovim && make -j4
+        sudo make install
+    fi
 }
 
 install_awesome() {
-    sudo apt install awesome -y
-    touch ~/.config/awesome/env_vars.lua
+    if no_cmd 'awesome'; then
+        sudo apt install awesome -y
+        touch ~/.config/awesome/env_vars.lua
 
-    # Install awesome plugins
-    git clone https://github.com/streetturtle/awesome-wm-widgets ~/.config/awesome
+        # Install awesome plugins
+        git clone https://github.com/streetturtle/awesome-wm-widgets ~/.config/awesome
 
-    # Install json parser
-    wget -P ~/.config/awesome/ https://raw.githubusercontent.com/rxi/json.lua/master/json.lua
+        # Install json parser
+        wget -P ~/.config/awesome/ https://raw.githubusercontent.com/rxi/json.lua/master/json.lua
 
-    # Remove duplicate json parser
-    rm ~/.config/awesome/json.lua.1
+        # Remove duplicate json parser
+        rm ~/.config/awesome/json.lua.1
+    fi
 }
 
 install_homebrew() {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if no_cmd 'brew'; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
 }
 
 install_ranger() {
-    sudo apt install ranger -y
+    if no_cmd 'ranger'; then
+        sudo apt install ranger -y
 
-    # Ranger image preview
-    sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev -y
-    pip install ueberzug
+        # Ranger image preview
+        sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev -y
+        pip install ueberzug
+    fi
 }
 
 install_tools() {
