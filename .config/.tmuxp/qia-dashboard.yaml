@@ -10,11 +10,11 @@ windows:
     panes:
       - shell_command:
         - cd ~/IdeaProjects/qia-dashboard
-        - nvm use 14.17
+        - nvm use 14.16
         - clear
       - shell_command:
         - cd ~/IdeaProjects/qia-dashboard
-        - nvm use 14.17
+        - nvm use 14.16
         - yarn
         - kill -9 $(lsof -t -i tcp:3000)
         - yarn dev
