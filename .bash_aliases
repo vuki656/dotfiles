@@ -37,10 +37,11 @@ alias r='ranger'
 alias h='htop'
 
 # Load TMUX Setups
-alias pq='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA
-alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                   # OEM
-alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                            # UI Kit
-alias pr='tmuxp load ~/.config/.tmuxp/ride-a-short-app.yaml -y'                                # Ride A Short
+alias pqa='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA Full Stack
+alias pqb='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y '                                        # QIA API
+alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                    # OEM
+alias pu='tmuxp load ~/.config/.tmuxp/oem-dashboard-ui-kit.yaml -y'                             # UI Kit
+alias pr='tmuxp load ~/.config/.tmuxp/ride-a-short-app.yaml -y'                                 # Ride A Short
 
 # TMUX
 alias tk='tmux kill-server'
