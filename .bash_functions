@@ -17,7 +17,11 @@ gc() {
 nodev() {
     nvm install "$*"
     nvm nvm use "$*"
-    npm i -g yarn -y
+
+    # Install yarn if not installed
+    if ! [ -x "$(command -v "yarn")" ]; then
+        npm i -g yarn -y
+    fi
 
     clear
 
