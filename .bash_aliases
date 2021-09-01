@@ -28,7 +28,7 @@ alias gcl='git clone'
 alias gpl='git pull'
 alias gp='git push'
 alias ga='git add -f'
-alias gaa='git add .'
+alias gaa='git add . -f'
 
 # Tools
 alias lg='lazygit'
