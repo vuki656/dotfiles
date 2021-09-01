@@ -29,6 +29,7 @@ install_npm_packages() {
     npm i -g typescript typescript-language-server -y # Typescript LS
     npm i -g @prisma/language-server -y               # Prisma LS
     npm i -g yaml-language-server -y                  # YAML LS
+    npm i -g npm                                      # Node package manager
 }
 
 install_brew_packages() {
