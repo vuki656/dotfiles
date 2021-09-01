@@ -26,18 +26,18 @@ nodev() {
 
 # Pull dots and neovim config
 pulla() {
-    cd ~/
+    cd ~/ || return
     git pull
 
-    cd ~/.config/nvim
+    cd ~/.config/nvim || return
     git pull
 
-    cd ~/
+    cd ~/ || return
 }
 
 # Search for files in terminal
 f() {
-    local result
+    result
 
     result=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}') || return
 
@@ -109,7 +109,7 @@ upgrades() {
     upgraden
 
     # Cargo
-    cargo install "$(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')"
+    cargo install "$(cargo install --list | grep -E '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')"
 
     # NPM
     # npm update -g

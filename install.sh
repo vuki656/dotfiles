@@ -123,7 +123,6 @@ install_python() {
 
 install_node() {
     if no_cmd 'node'; then
-        # Install NVM
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
         . ~/.nvm/nvm.sh
 

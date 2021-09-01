@@ -37,7 +37,7 @@ alias n='nvim'
 alias r='ranger'
 alias h='htop'
 
-# Load TMUX Setups
+# TMUX Setups
 alias pqa='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA Full Stack
 alias pqb='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y '                                        # QIA API
 alias po='tmuxp load ~/.config/.tmuxp/oem-dashboard.yaml -y'                                    # OEM
