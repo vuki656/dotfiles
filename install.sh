@@ -126,9 +126,9 @@ install_node() {
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash -y
         . ~/.nvm/nvm.sh
 
-        nvm install 14.17 -y
-        nvm use 14.17 -y
-        nvm alias default 14.17
+        nvm install 14.17.6 -y
+        nvm use 14.17.6-y
+        nvm alias default 14.17.6
     fi
 }
 
@@ -268,8 +268,8 @@ install_tools() {
 
 # Install everything
 if [ "$1" = 'a' ]; then
-    install_tools
     install_packages
+    install_tools
     install_languages
 fi
 
