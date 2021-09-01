@@ -280,18 +280,28 @@ module.global_keys = gears.table.join(
         description = "Open dmenu",
         group = module.key_groups.other,
     }),
+
     awful.key({ module.modkey }, "c", function()
         awful.util.spawn_with_shell("google-chrome --profile-directory=Default --password-store=gnome")
     end, {
         description = "Start chrome - PERSONAL",
         group = module.key_groups.apps,
     }),
+
     awful.key({ module.modkey }, "v", function()
         awful.util.spawn_with_shell("google-chrome --profile-directory='Profile 1' --password-store=gnome")
     end, {
         description = "Start chrome - WORK",
         group = module.key_groups.apps,
     }),
+
+    awful.key({ module.modkey }, "b", function()
+        awful.util.spawn_with_shell("/usr/bin/google-chrome --profile-directory=Default --password-store=gnome --app-id=cinhimbnkkaeohfgghhklpknlkffjgod")
+    end, {
+        description = "Start chrome - WORK",
+        group = module.key_groups.apps,
+    }),
+
     awful.key({ module.modkey }, "s", popup.show_help, {
         description = "Open key combo help",
         group = module.key_groups.other,
