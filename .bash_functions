@@ -13,6 +13,13 @@ gc() {
 #------------------------------------- MISC ---------------------------------------------------#
 ################################################################################################
 
+# Make a new named tmux session
+tn() {
+    tmux new -s "$*" -d
+    tmux switch-client -t "$*" 
+    tmux kill-session -t 0
+}
+
 # Install and set provided node version
 nodev() {
     nvm install "$*"
