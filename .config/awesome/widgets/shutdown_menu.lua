@@ -66,7 +66,7 @@ local function worker()
         {
             name = "Lock",
             command = function()
-                awful.spawn.with_shell("i3lock -c 000000")
+                awful.spawn.with_shell("~/scripts/lock.sh")
             end,
         },
         {

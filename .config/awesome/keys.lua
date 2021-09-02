@@ -151,7 +151,7 @@ module.taglist_buttons = gears.table.join(
 
 module.client_keys = gears.table.join(
     awful.key({ module.modkey }, "g", function()
-        awful.spawn.with_shell("i3lock --c 000000")
+        awful.spawn.with_shell("~/scripts/lock.sh")
     end, {
         description = "Lock screen",
         group = module.key_groups.other,
