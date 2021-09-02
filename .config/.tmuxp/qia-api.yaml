@@ -10,11 +10,11 @@ windows:
     panes:
       - shell_command:
         - cd ~/IdeaProjects/qia-graphql-api
-        - nvm use 14.16
+        - git pull
         - clear
       - shell_command:
         - cd ~/IdeaProjects/qia-graphql-api
-        - nvm use 14.16
+        - git pull
         - yarn
         - kill -9 $(lsof -t -i tcp:8082)
         - yarn setup

@@ -10,14 +10,10 @@ windows:
     panes:
       - shell_command:
         - cd ~/IdeaProjects/oem-dashboard-ui-kit
-        - nvm install 14.17
-        - nvm use 14.17
-        - npm i -g yarn
+        - git pull
         - clear
       - shell_command:
         - cd ~/IdeaProjects/oem-dashboard-ui-kit
-        - nvm install 14.17
-        - nvm use 14.17
         - git pull
         - yarn
         - kill -9 $(lsof -t -i tcp:9009)

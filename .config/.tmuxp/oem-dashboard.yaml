@@ -10,19 +10,11 @@ windows:
     panes:
       - shell_command:
         - cd ~/IdeaProjects/oem-dashboard
-        - nvm install 14.17
-        - nvm use 14.17
-        - npm i -g yarn
-        - git checkout develop
         - git pull
         - yarn
         - clear
       - shell_command:
         - cd ~/IdeaProjects/oem-dashboard
-        - nvm install 14.17
-        - nvm use 14.17
-        - npm i -g yarn
-        - git checkout develop
         - git pull
         - yarn
         - yarn dev
