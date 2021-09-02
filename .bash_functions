@@ -41,8 +41,6 @@ pulla() {
 
 # Search for files in terminal
 f() {
-    result
-
     result=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}') || return
 
     nvim "$result"
