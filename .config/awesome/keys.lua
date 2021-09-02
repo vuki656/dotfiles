@@ -623,7 +623,7 @@ module.global_keys = gears.table.join(
         },
         "o",
         function()
-            awful.spawn.with_shell("amixer -D pulse sset Master 3%-")
+            awful.spawn.with_shell("amixer -D pulse sset Master 1%-")
         end,
         {
             description = "Volume Down",
@@ -639,7 +639,7 @@ module.global_keys = gears.table.join(
         },
         "p",
         function()
-            awful.spawn.with_shell("amixer -D pulse sset Master 3%+")
+            awful.spawn.with_shell("amixer -D pulse sset Master 1%+")
         end,
         {
             description = "Volume Up",
