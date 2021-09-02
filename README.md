@@ -18,3 +18,5 @@
 
         return module
     ```
+
+3. Install GRUB theme from [HERE](https://github.com/vinceliuice/grub2-themes)
