@@ -79,7 +79,9 @@ install_apt_packages() {
     sudo apt install brightness-controller # Brightness controller
     sudo apt install peek -y               # GIF Recorder
     sudo apt install ripgrep -y            # Fuzzy Finder
-    sudo apt install tmux                  # Terminal multiplexer
+    sudo apt install tmux -y               # Terminal multiplexer
+    sudo apt install imagemagick -y        # Image manipulator
+    sudo apt install scrot -y              # Terminal screenshot tool
 }
 
 install_python_packages() {
