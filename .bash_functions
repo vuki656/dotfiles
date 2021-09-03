@@ -37,11 +37,15 @@ nodev() {
 
 # Pull dots and neovim config
 pulla() {
+    echo "==== PULLING DOTS ==="
     cd ~/ || return
     git pull
+    echo "==== DOTS PULLED ===="
 
+    echo "==== PULLING NVIM ==="
     cd ~/.config/nvim || return
     git pull
+    echo "==== NVIM PULLED ===="
 
     cd ~/ || return
 }
