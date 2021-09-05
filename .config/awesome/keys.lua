@@ -169,7 +169,7 @@ module.client_keys = gears.table.join(
         {
             module.modkey,
         },
-        "x",
+        "r",
         function(client)
             client:kill()
         end,
