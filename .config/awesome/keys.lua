@@ -560,13 +560,6 @@ module.global_keys = gears.table.join(
         }
     ),
 
-    awful.key({ module.modkey }, "r", function()
-        awful.screen.focused().mypromptbox:run()
-    end, {
-        description = "Open run prompt",
-        group = module.key_groups.prompts,
-    }),
-
     awful.key(
         {
             module.modkey,
