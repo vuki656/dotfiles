@@ -26,7 +26,7 @@ install_npm_packages() {
     npm i -g dockerfile-language-server-nodejs -y     # Docker LS
     npm i -g graphql-language-service-cli -y          # Graphql LS
     npm i -g vscode-langservers-extracted -y          # CSS, HTML & JSON LS
-    npm i -g typescript typescript-language-server -y # Typescript LS
+    npm i -g typescript-language-server -y # Typescript LS
     npm i -g @prisma/language-server -y               # Prisma LS
     npm i -g yaml-language-server -y                  # YAML LS
     npm i -g npm                                      # Node package manager
