@@ -17,7 +17,6 @@ gc() {
 tn() {
     tmux new -s "$*" -d
     tmux switch-client -t "$*" 
-    tmux kill-session -t HOME
 }
 
 # Install and set provided node version
