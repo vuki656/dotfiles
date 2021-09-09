@@ -40,6 +40,7 @@ install_brew_packages() {
     brew install fzf                                 # Terminal finder
     brew install bat                                 # Terminal preview
     brew install cocoapods                           # iOS Package manager
+    brew install diff-so-fancy                       # Git diff view
 }
 
 install_snap_packages() {

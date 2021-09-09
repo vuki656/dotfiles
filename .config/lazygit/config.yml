@@ -1,9 +1,8 @@
 git:
   paging:
     colorArg: always
-    # Respect .gitconfig 
     useConfig: true
 keybinding:
   universal:
-    scrollUpMain: 'I' # main panel scroll up
-    scrollDownMain: 'U' # main panel scroll down
+    scrollUpMain: "I"
+    scrollDownMain: "U"
