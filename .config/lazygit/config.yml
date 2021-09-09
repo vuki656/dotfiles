@@ -1,0 +1,5 @@
+git:
+  paging:
+    colorArg: always
+    # Respect .gitconfig 
+    useConfig: true
