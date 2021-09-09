@@ -2,7 +2,3 @@ git:
   paging:
     colorArg: always
     useConfig: true
-keybinding:
-  universal:
-    scrollUpMain: "I"
-    scrollDownMain: "U"
