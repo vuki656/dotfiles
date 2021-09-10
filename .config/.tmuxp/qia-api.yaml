@@ -16,6 +16,6 @@ windows:
         - cd ~/IdeaProjects/qia-graphql-api
         - git pull
         - yarn
-        - kill -9 $(lsof -t -i tcp:8082)
+        - kill -9 $(lsof -t -i tcp:8080)
         - yarn setup
         - yarn start
