@@ -46,6 +46,11 @@ pulla() {
     git pull
     echo "==== NVIM PULLED ===="
 
+    echo "==== PULLING NOTES ==="
+    cd ~/personal || return
+    git pull
+    echo "==== NOTES PULLED ===="
+
     cd ~/ || return
 }
 
