@@ -14,22 +14,22 @@ no_cmd() {
 ################################################################################################
 
 install_npm_packages() {
-    npm i -g yarn -y                                  # Node package manager
-    npm i -g eslint_d -y                              # JS Linter/Formatter
-    npm i -g prettier -y                              # JS Linter/Formatter
-    npm i -g markdownlint -y                          # Markdown linter
-    npm i -g markdownlint-cli -y                      # Markdown cli
-    npm i -g write-good -y                            # Sentence structure checker
-    npm i -g fixjson -y                               # JSON Formatter
-    npm i -g bash-language-server -y                  # Bash LS
-    npm i -g diagnostic-languageserver -y             # Diagnostics LS
-    npm i -g dockerfile-language-server-nodejs -y     # Docker LS
-    npm i -g graphql-language-service-cli -y          # Graphql LS
-    npm i -g vscode-langservers-extracted -y          # CSS, HTML & JSON LS
-    npm i -g typescript-language-server -y # Typescript LS
-    npm i -g @prisma/language-server -y               # Prisma LS
-    npm i -g yaml-language-server -y                  # YAML LS
-    npm i -g npm                                      # Node package manager
+    npm i -g yarn -y                              # Node package manager
+    npm i -g eslint_d -y                          # JS Linter/Formatter
+    npm i -g prettier -y                          # JS Linter/Formatter
+    npm i -g markdownlint -y                      # Markdown linter
+    npm i -g markdownlint-cli -y                  # Markdown cli
+    npm i -g write-good -y                        # Sentence structure checker
+    npm i -g fixjson -y                           # JSON Formatter
+    npm i -g bash-language-server -y              # Bash LS
+    npm i -g diagnostic-languageserver -y         # Diagnostics LS
+    npm i -g dockerfile-language-server-nodejs -y # Docker LS
+    npm i -g graphql-language-service-cli -y      # Graphql LS
+    npm i -g vscode-langservers-extracted -y      # CSS, HTML & JSON LS
+    npm i -g typescript-language-server -y        # Typescript LS
+    npm i -g @prisma/language-server -y           # Prisma LS
+    npm i -g yaml-language-server -y              # YAML LS
+    npm i -g npm                                  # Node package manager
 }
 
 install_brew_packages() {
@@ -85,6 +85,10 @@ install_apt_packages() {
     sudo apt install scrot -y              # Terminal screenshot tool
 }
 
+install_luarocks_packages() {
+    luarocks install vusted # Lua testing wrapper
+}
+
 install_python_packages() {
     pip install codespell # Spellchecker
 }
@@ -96,6 +100,7 @@ install_packages() {
     install_rust_packages
     install_apt_packages
     install_python_packages
+    install_luarocks_packages
 
     echo '================= PACKAGES INSTALLED ================='
 }
