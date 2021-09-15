@@ -204,6 +204,13 @@ install_languages() {
 #-------------------------------------- TOOLS -------------------------------------------------#
 ################################################################################################
 
+install_cheatsh() {
+    if no_cmd 'cht.sh'; then
+        sudo curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+        sudo chmod +x /usr/local/bin/cht.sh
+    fi
+}
+
 install_docker() {
     if no_cmd 'docker'; then
         sudo apt-get update -y
@@ -267,6 +274,7 @@ install_tools() {
     install_awesome
     install_homebrew
     install_ranger
+    install_cheatsh
 
     echo '================= TOOLS INSTALLED ================='
 }

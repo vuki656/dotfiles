@@ -35,7 +35,8 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias n='nvim'
 alias r='ranger'
-alias h='htop'
+alias ht='htop'
+alias h='cht.sh'
 
 # TMUX Setups
 alias pqa='tmuxp load ~/.config/.tmuxp/qia-api.yaml -y ~/.config/.tmuxp/qia-dashboard.yaml -y ' # QIA Full Stack
