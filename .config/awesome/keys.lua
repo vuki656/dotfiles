@@ -296,9 +296,11 @@ module.global_keys = gears.table.join(
     }),
 
     awful.key({ module.modkey }, "b", function()
-        awful.util.spawn_with_shell("/usr/bin/google-chrome --profile-directory=Default --password-store=gnome --app-id=cinhimbnkkaeohfgghhklpknlkffjgod")
+        awful.util.spawn_with_shell(
+            "/usr/bin/google-chrome --profile-directory=Default --password-store=gnome --app-id=cinhimbnkkaeohfgghhklpknlkffjgod"
+        )
     end, {
-        description = "Start chrome - WORK",
+        description = "Start chrome - YOUTUBE MUSIC",
         group = module.key_groups.apps,
     }),
 
