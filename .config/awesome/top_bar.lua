@@ -18,13 +18,13 @@ local battery_widget = require("widgets.battery_indicator")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 
 awful.screen.connect_for_each_screen(function(screen)
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, screen, awful.layout.layouts[1])
+    awful.tag({ "  ", "  ", " ", " ", " "}, screen,  awful.layout.layouts[1])
 
     -- Create topbar
     screen.mywibox = awful.wibar({
         position = "top",
         screen = screen,
-        bg = colors.blue_light_transparet,
+        bg = colors.blue_dark,
         height = 30,
     })
 
@@ -41,14 +41,22 @@ awful.screen.connect_for_each_screen(function(screen)
             {
                 {
                     {
+                        {
+                            id = "icon_role",
+                            widget = wibox.widget.imagebox,
+                        },
+                        widget = wibox.container.place,
+                        layout = wibox.layout.fixed.horizontal,
+                    },
+                    {
                         id = "text_role",
                         widget = wibox.widget.textbox,
                     },
+                    widget = wibox.container.place,
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left = 8,
-                right = 8,
-                widget = wibox.container.margin,
+                widget = wibox.container.place,
+                forced_width = 35,
             },
             id = "background_role",
             widget = wibox.container.background,
