@@ -74,4 +74,4 @@ alias screenwm='~/.screenlayout/work-multiple.sh'
 alias screenws='~/.screenlayout/work-single.sh'
 
 # Task Warrior
-alias tls='task list'
+alias tw='task list'
