@@ -19,6 +19,7 @@ local battery_widget = require("widgets.battery_indicator")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 
 awful.screen.connect_for_each_screen(function(screen)
+    -- stylua: ignore
     awful.tag({ "  ", "  ", " ", " ", " "}, screen,  awful.layout.layouts[1])
 
     -- Create topbar
