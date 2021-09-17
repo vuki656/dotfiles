@@ -26,7 +26,7 @@ awful.screen.connect_for_each_screen(function(screen)
     screen.mywibox = awful.wibar({
         position = "top",
         screen = screen,
-        bg = colors.blue_dark,
+        bg = colors.blue_dark_transparent,
         height = 30,
     })
 
@@ -42,23 +42,11 @@ awful.screen.connect_for_each_screen(function(screen)
         widget_template = {
             {
                 {
-                    {
-                        {
-                            id = "icon_role",
-                            widget = wibox.widget.imagebox,
-                        },
-                        widget = wibox.container.place,
-                        layout = wibox.layout.fixed.horizontal,
-                    },
-                    {
-                        id = "text_role",
-                        widget = wibox.widget.textbox,
-                    },
-                    widget = wibox.container.place,
-                    layout = wibox.layout.fixed.horizontal,
+                    id = "text_role",
+                    widget = wibox.widget.textbox,
                 },
                 widget = wibox.container.place,
-                forced_width = 35,
+                forced_width = 30,
             },
             id = "background_role",
             widget = wibox.container.background,
@@ -117,6 +105,7 @@ awful.screen.connect_for_each_screen(function(screen)
         battery_widget({}),
     }
 
+    -- Final bar setup
     screen.mywibox:setup({
         layout = wibox.layout.align.horizontal,
         top = 5,
