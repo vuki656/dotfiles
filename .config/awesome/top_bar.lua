@@ -12,7 +12,7 @@ local colors = require("utils.colors")
 local logout_menu_widget = require("widgets.shutdown_menu")
 local temperature_widget = require("widgets.temperature")
 local layout_widget = require("widgets.layout")
-local systray = require("widgets.systray")
+local systray_widget = require("widgets.systray")
 local clock_widget = require("widgets.clock")
 local battery_widget = require("widgets.battery_indicator")
 
@@ -111,7 +111,7 @@ awful.screen.connect_for_each_screen(function(screen)
         logout_menu_widget(),
         temperature_widget(),
         clock_widget,
-        systray,
+        systray_widget,
         layout_widget(screen),
         battery_widget({}),
     }

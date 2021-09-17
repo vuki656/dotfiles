@@ -4,7 +4,7 @@
 
 pcall(require, "luarocks.loader")
 
-local has_fdo, freedesktop = pcall(require, "freedesktop")
+local _, freedesktop = pcall(require, "freedesktop")
 local awful = require("awful")
 local keys = require("keys")
 
