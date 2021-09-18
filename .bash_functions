@@ -34,7 +34,7 @@ gsa() {
 # Make a new named tmux session
 tn() {
     tmux new -s "$*" -d
-    tmux switch-client -t "$*" 
+    tmux switch-client -t "$*"
 }
 
 # Install and set provided node version
