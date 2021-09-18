@@ -15,8 +15,7 @@ local layout_widget = require("widgets.layout")
 local systray_widget = require("widgets.systray")
 local clock_widget = require("widgets.clock")
 local battery_widget = require("widgets.battery_indicator")
-
-local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local volume_widget = require("widgets.volume-widget.volume")
 
 awful.screen.connect_for_each_screen(function(screen)
     -- stylua: ignore
