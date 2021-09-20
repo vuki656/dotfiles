@@ -42,6 +42,7 @@ install_brew_packages() {
     brew install bat                                 # Terminal preview
     brew install cocoapods                           # iOS Package manager
     brew install diff-so-fancy                       # Git diff view
+    brew install exa                                 # Better ls
 }
 
 install_snap_packages() {
