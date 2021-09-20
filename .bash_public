@@ -7,6 +7,9 @@ source ~/.bash_aliases
 #-------------------------------------- CONFIG ------------------------------------------------#
 ################################################################################################
 
+# LS icon spacing
+export EXA_ICON_SPACING=2
+
 # Set preferred editor system wide
 export VISUAL=nvim
 export EDITOR=nvim
