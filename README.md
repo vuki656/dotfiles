@@ -19,3 +19,4 @@
    ```
 
 2. Install GRUB theme from [HERE](https://github.com/vinceliuice/grub2-themes)
+3. Install tmux plugin manager from [HERE](https://github.com/tmux-plugins/tpm)
