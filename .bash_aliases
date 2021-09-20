@@ -58,6 +58,7 @@ alias ggal='cd ~/.config/alacritty/ && nvim alacritty.yml'
 alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
+alias ggbp='nvim ~/.bash_public'
 
 alias ggnt='cd ~/personal/ && nvim README.md'
 alias ggpi='cd ~/Projects/package-info.nvim/ && nvim'
