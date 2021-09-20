@@ -6,7 +6,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux attach || tmux new -s HOME"
+    - "tmux attach || tmux new -s ' HOME'"
 
 colors:
   primary:
