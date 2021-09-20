@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install Script
 alias installa='bash ~/install.sh a'
@@ -14,7 +14,6 @@ alias gh='cd ~/'
 alias rmd='rm -rf'
 alias nv='node -v'
 alias l='exa --long --header --icons --all --sort=type --no-user'
-
 alias t='touch'
 alias gp='chmod +x'
 
@@ -58,8 +57,7 @@ alias ggal='cd ~/.config/alacritty/ && nvim alacritty.yml'
 alias ggis='nvim ~/install.sh'
 alias ggba='nvim ~/.bash_aliases'
 alias ggbf='nvim ~/.bash_functions'
-alias ggbp='nvim ~/.bash_public'
-
+alias ggbp='nvim ~/.bash_profile'
 alias ggnt='cd ~/personal/ && nvim README.md'
 alias ggpi='cd ~/Projects/package-info.nvim/ && nvim'
 

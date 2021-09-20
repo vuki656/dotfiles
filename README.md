@@ -1,8 +1,6 @@
 # Installation
 
-1. Add the following to the `.bashrc`
-   - `source ~/.bash_public.bash`
-2. Setup weather widget
+1. Setup weather widget
 
    - Grab an API key [HERE](https://home.openweathermap.org/api_keys)
    - Grab lat/long [HERE](https://www.maps.ie/coordinates.html)
@@ -20,4 +18,4 @@
        return module
    ```
 
-3. Install GRUB theme from [HERE](https://github.com/vinceliuice/grub2-themes)
+2. Install GRUB theme from [HERE](https://github.com/vinceliuice/grub2-themes)

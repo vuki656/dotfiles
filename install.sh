@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Check if given command can be executed
 no_cmd() {
