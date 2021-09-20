@@ -49,7 +49,7 @@ function color_my_prompt {
     local __user="\[\033[01;32m\]\u"
     local __cur_location="\[\033[01;34m\]\w"
     local __git_branch_color="\[\033[31m\]"
-    local __git_branch="$(git branch 2>/dev/null | grep -e ^* | sed -E s/^\\\*\ \(.+\)$/\(\\\1\)\ /)"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
     local __prompt_tail="\[\033[35m\]>|"
     local __last_color="\[\033[00m\]"
 
