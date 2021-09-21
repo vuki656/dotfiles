@@ -30,6 +30,7 @@ alias gpl='git pull'
 alias gp='git push'
 alias ga='git add -f'
 alias gaa='git add . -f'
+alias gfo='git fetch origin'
 
 # Tools
 alias lg='lazygit'
