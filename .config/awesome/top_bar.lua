@@ -68,14 +68,50 @@ awful.screen.connect_for_each_screen(function(screen)
         screen = screen,
         filter = awful.widget.tasklist.filter.currenttags,
         buttons = keys.tasklist_buttons,
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            id = "text_role",
+                            widget = wibox.widget.textbox,
+                        },
+                        layout = wibox.layout.fixed.horizontal,
+                    },
+                    left = 10,
+                    right = 10,
+                    widget = wibox.container.margin,
+                },
+                id = "background_role",
+                widget = wibox.container.background,
+            },
+            left = 5,
+            right = 5,
+            top = 5,
+            bottom = 5,
+            widget = wibox.container.margin,
+        },
+        layout = {
+            spacing = 10,
+            spacing_widget = {
+                valign = "center",
+                halign = "center",
+                widget = wibox.container.place,
+            },
+            layout = wibox.layout.flex.horizontal,
+        },
         style = {
             tasklist_disable_icon = true,
             bg_normal = colors.transparent,
             bg_focus = colors.transparent,
             bg_minimize = colors.transparent,
             fg_normal = colors.white,
-            fg_focus = colors.white,
+            fg_focus = colors.red,
             fg_minimize = colors.white,
+            font = "Montserrat bold 12",
+            shape = function(cairo, width, height)
+                gears.shape.rounded_rect(cairo, width, height, 3)
+            end,
         },
     })
 
