@@ -1,0 +1,47 @@
+#!/bin/bash
+
+source ~/.bash_functions
+source ~/.bash_aliases
+
+################################################################################################
+#-------------------------------------- CONFIG ------------------------------------------------#
+################################################################################################
+
+# LS icon spacing
+export EXA_ICON_SPACING=2
+
+# Set preferred editor system wide
+export VISUAL=nvim
+export EDITOR=nvim
+
+# Init GIT keys
+eval "$(gnome-keyring-daemon --start)"
+export SSH_AUTH_SOCK
+export GNOME_KEYRING_PID
+export GNOME_KEYRING_CONTROL
+
+# Mobile Dev
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+################################################################################################
+#------------------------------- Create PS1 (Terminal prefix) ---------------------------------#
+################################################################################################
+
+function color_my_prompt {
+    local __time="[\[\033[00;34m\]\t\[$(tput sgr0)\]]"
+    local __user="\[\033[01;32m\]\u"
+    local __cur_location="\[\033[01;34m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[35m\]>|"
+    local __last_color="\[\033[00m\]"
+
+    export PS1="┌$__time $__user $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color
+└────>$ "
+}
+
+color_my_prompt
