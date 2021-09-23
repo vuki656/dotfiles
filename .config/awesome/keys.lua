@@ -279,6 +279,13 @@ M.global_keys = gears.table.join(
         group = M.key_groups.other,
     }),
 
+    awful.key({ M.modkey }, ";", function()
+        awful.util.spawn_with_shell("~/scripts/rofi-google.sh")
+    end, {
+        description = "Open dmenu for google search",
+        group = M.key_groups.other,
+    }),
+
     awful.key({ M.modkey }, "c", function()
         awful.util.spawn_with_shell("google-chrome --profile-directory=Default --password-store=gnome")
     end, {

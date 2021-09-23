@@ -15,7 +15,6 @@ alias rmd='rm -rf'
 alias nv='node -v'
 alias l='exa --long --header --icons --all --sort=type --no-user'
 alias t='touch'
-alias gp='chmod +x'
 
 # Apt
 alias update='sudo apt update'
