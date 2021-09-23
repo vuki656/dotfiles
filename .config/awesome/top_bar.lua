@@ -108,7 +108,7 @@ awful.screen.connect_for_each_screen(function(screen)
             fg_normal = colors.white,
             fg_focus = colors.red,
             fg_minimize = colors.white,
-            font = "Montserrat bold 12",
+            font = "Montserrat bold 10",
             shape = function(cairo, width, height)
                 gears.shape.rounded_rect(cairo, width, height, 3)
             end,
